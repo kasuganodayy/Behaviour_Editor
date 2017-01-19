@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Behaviour_Editor
 {
     public class XMLHelper
     {
-        public void SerializeXML(string filePath, List<Npc> Npcs)
+        public void SerializeXML(string filePath, Objects objects)
         {
-            // Skip if no Npc present in List
-            if(Npcs.Count <= 0)
-            {
-                return;
-            }
-
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Npc>), new XmlRootAttribute("Npcs"));
+            XmlSerializer serializer = new XmlSerializer(typeof(Objects));
             XmlWriterSettings xmlSettings = new XmlWriterSettings();
             xmlSettings.Indent = true;
             xmlSettings.OmitXmlDeclaration = true;
@@ -29,26 +24,25 @@ namespace Behaviour_Editor
 
             XmlSerializerNamespaces xmlNS = new XmlSerializerNamespaces(new XmlQualifiedName[] { new XmlQualifiedName(string.Empty, "urn:Objects") });
 
-            serializer.Serialize(xmlWriter, Npcs, xmlNS);
+            serializer.Serialize(xmlWriter, objects, xmlNS);
         }
 
-        public List<Npc> DeserialzeXML(string filePath, List<Npc>Npcs)
+        public Objects DeserialzeXML(string filePath, Objects objects)
         {
-            XmlSerializer serializer = new XmlSerializer(Npcs.GetType(), new XmlRootAttribute("Npcs"));
+            XmlSerializer serializer = new XmlSerializer(typeof(Objects));
 
             FileStream xmlStream = new FileStream(filePath, FileMode.Open);
 
             try
             {
-                Npcs = (List<Npc>)serializer.Deserialize(xmlStream);
+                objects = (Objects)serializer.Deserialize(xmlStream);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.GetType().FullName);
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message, ex.GetType().FullName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return Npcs;
+            return objects;
         }
     }
 }

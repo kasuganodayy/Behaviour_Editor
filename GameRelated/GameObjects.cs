@@ -34,33 +34,7 @@ namespace Behaviour_Editor
                 }
             }
         }
-        //{
-        //    get
-        //    {
-        //        var attr = new XmlDocument().CreateAttribute(XmlConvert.EncodeLocalName(m_type));
-        //        attr.Value = m_name;
-        //        return new[] { attr };
-        //    }
-        //    set
-        //    {
-        //        var attr = (value == null ? null : value.FirstOrDefault());
-        //        if (attr == null)
-        //        {
-        //            m_name =
-        //                m_type = string.Empty;
-        //        }
-        //        else
-        //        {
-        //            m_type = XmlConvert.DecodeName(attr.Name);
-        //            m_name = attr.Value;
-        //        }
-        //    }
-        //}
 
-        //[XmlIgnore]
-        //public string m_type;
-        //[XmlIgnore]
-        //public string m_name;
         [XmlIgnore]
         public Dictionary<string, string> m_attributes { get; set; }
 
@@ -69,9 +43,30 @@ namespace Behaviour_Editor
 
         public OwnedObjects(string _type, string _name)
         {
+            // Obsolete: Left over from List<OwnedObjects> version. (Before GitHub "8a83b88" Commit)
             //m_type = _type;
             //m_name = _name;
         }
+    }
+
+    [XmlType("GameObject")]
+    public class GameObject
+    {
+        [XmlAttribute("name")]
+        public string m_name { get; set; }
+        [XmlAttribute("type")]
+        public string m_type { get; set; }
+        [XmlElement("Shape")]
+        public Rect m_rect { get; set; }
+        [XmlElement("Color")]
+        public Colour m_colour { get; set; }
+    }
+
+    [Serializable, XmlRoot("Objects")]
+    public class Objects // I'm gonna so regret this class name...
+    {
+        public List<GameObject> GameObjects { get; set; }
+        public List<Npc> Npcs { get; set; }
     }
 
     public class ActionSchedule

@@ -12,34 +12,17 @@ namespace Behaviour_Editor
 {
     public partial class Form1 : Form
     {
-        public string filePath = null;
-        public List<Npc> Npcs = new List<Npc>();
+        public string filePath = "xml/Objects.xml";
+        public Objects objects = new Objects();
 
         public Form1()
         {
-            filePath = "xml/Objects.xml";
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataSet1.ReadXml(filePath);
 
-            dataGridView1.DataSource = dataSet1;
-            dataGridView1.DataMember = "Npc";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            button1.Click -= button1_Click;
-            button1.Enabled = false;
-
-            // Save XML
-            System.IO.FileStream stream = new System.IO.FileStream(filePath, System.IO.FileMode.Create);
-            dataSet1.WriteXml(stream);
-            
-            button1.Click += button1_Click;
-            button1.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,7 +32,7 @@ namespace Behaviour_Editor
 
             // Serialize XML
             XMLHelper test = new XMLHelper();
-            test.SerializeXML("xml/test_serialize.xml", Npcs);
+            test.SerializeXML(filePath, objects);
             
             button2.Click += button2_Click;
             button2.Enabled = true;
@@ -62,10 +45,9 @@ namespace Behaviour_Editor
 
             // Load XML
             XMLHelper test = new XMLHelper();
-            Npcs = test.DeserialzeXML("xml/test.xml", Npcs);
+            objects = test.DeserialzeXML(filePath, objects);
 
             button3.Click += button3_Click;
-            button3.Enabled = true;
         }
     }
 }
