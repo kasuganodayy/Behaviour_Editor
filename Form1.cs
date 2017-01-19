@@ -19,17 +19,6 @@ namespace Behaviour_Editor
         {
             filePath = "xml/Objects.xml";
             InitializeComponent();
-
-            //Npcs.Add(new Npc()
-            //{
-            //    m_name = "JoeTheDayGuard",
-            //    m_pos = new Vector2(-16, 25),
-            //    m_facing = new Vector2(1, 0),
-            //    m_colour = new Colour(0, 0, 0, 255),
-            //    m_objectOwned = new List<OwnedObjects> { new OwnedObjects("bed", "JoeBed") },
-            //    //objectOwned.Add(new worldObjects("bed", "JoeBed")),
-            //    m_actionSchedule = new ActionSchedule("DayGuard")
-            //});
         }
 
         private void Form1_Load(object sender, EventArgs e)
