@@ -24,8 +24,15 @@ namespace Behaviour_Editor
                 testNPC.colour.g =
                 testNPC.colour.b = 0;
             testNPC.colour.a = 255;
-            testNPC.objectOwned = new List<string>(new string[] { "JoeBed" });
-            //testNPC.actionSchedule = "DayGuard";
+            testNPC.objectOwned = new List<worldObjects>();
+
+            worldObjects joeObjects = new worldObjects();
+            joeObjects.type = "bed";
+            joeObjects.name = "JoeBed";
+
+            testNPC.objectOwned.Add(joeObjects);
+            testNPC.actionSchedule = new schedule();
+            testNPC.actionSchedule.name = "DayGuard";
 
             XmlSerializer serializer = new XmlSerializer(typeof(Npc));
             XmlWriterSettings xmlSettings = new XmlWriterSettings();
@@ -50,9 +57,9 @@ namespace Behaviour_Editor
         [XmlElement("Color")]
         public Colour colour { get; set; }
         [XmlElement("ObjectOwnership")]
-        public List<string> objectOwned { get; set; }
+        public List<worldObjects> objectOwned { get; set; }
         [XmlElement("InitialSchedule")]
-        public string actionSchedule { get; set; }
+        public schedule actionSchedule { get; set; }
 
         private XmlSerializerNamespaces _namespace;
 
@@ -90,5 +97,19 @@ namespace Behaviour_Editor
         public int b;
         [XmlAttribute]
         public int a;
+    }
+
+    public class worldObjects
+    {
+        [XmlIgnore]
+        public string type;
+        [XmlAttribute]
+        public string name;
+    }
+
+    public class schedule
+    {
+        [XmlAttribute]
+        public string name;
     }
 }
