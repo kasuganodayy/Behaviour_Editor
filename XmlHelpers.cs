@@ -13,22 +13,6 @@ namespace Behaviour_Editor
     {
         public void SerializeXML(string filePath, List<Npc> Npcs)
         {
-            // serialize
-            //Npc testNPC = new Npc();
-            //testNPC.name = "JoeTheDayGuard";
-            //testNPC.pos.x = -16;
-            //testNPC.pos.y = 25;
-            //testNPC.facing.x = 1;
-            //testNPC.facing.y = 0;
-            //testNPC.colour.r =
-            //    testNPC.colour.g =
-            //    testNPC.colour.b = 0;
-            //testNPC.colour.a = 255;
-            //testNPC.objectOwned = new List<worldObjects>();
-            //testNPC.objectOwned.Add(new worldObjects("bed", "JoeBed"));
-            //testNPC.actionSchedule = new schedule();
-            //testNPC.actionSchedule.name = "DayGuard";
-
             // Skip if no Npc present in List
             if(Npcs.Count <= 0)
             {
@@ -48,16 +32,23 @@ namespace Behaviour_Editor
             serializer.Serialize(xmlWriter, Npcs, xmlNS);
         }
 
-        public void DeserialzeXML(string filePath, List<Npc>Npcs)
+        public List<Npc> DeserialzeXML(string filePath, List<Npc>Npcs)
         {
             XmlSerializer serializer = new XmlSerializer(Npcs.GetType(), new XmlRootAttribute("Npcs"));
-            XmlReaderSettings xmlSettings = new XmlReaderSettings();
-            xmlSettings.CheckCharacters = false;
 
             FileStream xmlStream = new FileStream(filePath, FileMode.Open);
-            
 
-            Npcs = (List<Npc>)serializer.Deserialize(xmlStream);
+            try
+            {
+                Npcs = (List<Npc>)serializer.Deserialize(xmlStream);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.Message);
+            }
+
+            return Npcs;
         }
     }
 }

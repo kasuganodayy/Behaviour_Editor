@@ -8,57 +8,81 @@ using System.Xml.Serialization;
 
 namespace Behaviour_Editor
 {
-    public class worldObjects
+    public class OwnedObjects
     {
         [XmlAnyAttribute]
-        public XmlAttribute[] attibutes
+        public XmlAttribute[] xmlAttributes
         {
             get
             {
-                var attr = new XmlDocument().CreateAttribute(XmlConvert.EncodeLocalName(type));
-                attr.Value = name;
-                return new[] { attr };
+                if(m_attributes == null)
+                {
+                    return null;
+                }
+                var xmlDoc = new XmlDocument();
+                return m_attributes.Select(p => { var att = xmlDoc.CreateAttribute(p.Key); att.Value = p.Value; return att; }).ToArray();
             }
             set
             {
-                var attr = (value == null ? null : value.SingleOrDefault());
-                if (attr == null)
+                if(value == null)
                 {
-                    name =
-                        type = string.Empty;
+                    m_attributes = null;
                 }
                 else
                 {
-                    type = XmlConvert.DecodeName(attr.Name);
-                    name = attr.Value;
+                    m_attributes = value.ToDictionary(att => att.Name, att => att.Value);
                 }
             }
         }
+        //{
+        //    get
+        //    {
+        //        var attr = new XmlDocument().CreateAttribute(XmlConvert.EncodeLocalName(m_type));
+        //        attr.Value = m_name;
+        //        return new[] { attr };
+        //    }
+        //    set
+        //    {
+        //        var attr = (value == null ? null : value.FirstOrDefault());
+        //        if (attr == null)
+        //        {
+        //            m_name =
+        //                m_type = string.Empty;
+        //        }
+        //        else
+        //        {
+        //            m_type = XmlConvert.DecodeName(attr.Name);
+        //            m_name = attr.Value;
+        //        }
+        //    }
+        //}
 
+        //[XmlIgnore]
+        //public string m_type;
+        //[XmlIgnore]
+        //public string m_name;
         [XmlIgnore]
-        public string type;
-        [XmlIgnore]
-        public string name;
+        public Dictionary<string, string> m_attributes { get; set; }
 
         // parameterless constructor for XmlSerializer
-        worldObjects() : this(string.Empty, string.Empty) { }
+        OwnedObjects() : this(string.Empty, string.Empty) { }
 
-        public worldObjects(string _type, string _name)
+        public OwnedObjects(string _type, string _name)
         {
-            type = _type;
-            name = _name;
+            //m_type = _type;
+            //m_name = _name;
         }
     }
 
-    public class schedule
+    public class ActionSchedule
     {
-        [XmlAttribute]
-        public string name;
+        [XmlAttribute("name")]
+        public string m_name;
 
-        schedule() : this(string.Empty) { }
-        public schedule(string _name)
+        ActionSchedule() : this(string.Empty) { }
+        public ActionSchedule(string _name)
         {
-            name = _name;
+            m_name = _name;
         }
     }
 }

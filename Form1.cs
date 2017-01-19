@@ -20,16 +20,16 @@ namespace Behaviour_Editor
             filePath = "xml/Objects.xml";
             InitializeComponent();
 
-            Npcs.Add(new Npc()
-            {
-                name = "JoeTheDayGuard",
-                pos = new Vector2(-16, 25),
-                facing = new Vector2(1, 0),
-                colour = new Colour(0, 0, 0, 255),
-                objectOwned = new List<worldObjects> { new worldObjects("bed", "JoeBed") },
-                //objectOwned.Add(new worldObjects("bed", "JoeBed")),
-                actionSchedule = new schedule("DayGuard")
-            });
+            //Npcs.Add(new Npc()
+            //{
+            //    m_name = "JoeTheDayGuard",
+            //    m_pos = new Vector2(-16, 25),
+            //    m_facing = new Vector2(1, 0),
+            //    m_colour = new Colour(0, 0, 0, 255),
+            //    m_objectOwned = new List<OwnedObjects> { new OwnedObjects("bed", "JoeBed") },
+            //    //objectOwned.Add(new worldObjects("bed", "JoeBed")),
+            //    m_actionSchedule = new ActionSchedule("DayGuard")
+            //});
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace Behaviour_Editor
 
             // Load XML
             XMLHelper test = new XMLHelper();
-            test.DeserialzeXML("xml/test.xml", Npcs);
+            Npcs = test.DeserialzeXML("xml/test.xml", Npcs);
 
             button3.Click += button3_Click;
             button3.Enabled = true;

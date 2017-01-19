@@ -11,17 +11,17 @@ namespace Behaviour_Editor
     [XmlType("Npc")]
     public class Npc
     {
-        [XmlAttribute("Name")]
-        public string name { get; set; }
+        [XmlAttribute("name")]
+        public string m_name { get; set; }
         [XmlElement("Shape")]
-        public Vector2 pos { get; set; }
+        public Vector2 m_pos { get; set; }
         [XmlElement("Facing")]
-        public Vector2 facing { get; set; }
+        public Vector2 m_facing { get; set; }
         [XmlElement("Color")]
-        public Colour colour { get; set; }
+        public Colour m_colour { get; set; }
         [XmlElement("ObjectOwnership")]
-        public List<worldObjects> objectOwned { get; set; }
+        public OwnedObjects m_objectOwned { get; set; }
         [XmlElement("InitialSchedule")]
-        public schedule actionSchedule { get; set; }
+        public ActionSchedule m_actionSchedule { get; set; }
     }
 }
