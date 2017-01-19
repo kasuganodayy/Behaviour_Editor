@@ -42,6 +42,7 @@ namespace Behaviour_Editor
         {
             button3.Click -= button3_Click;
             button3.Enabled = false;
+            button2.Enabled = true; // Enable Save button only after loading a file
 
             // Load XML
             XMLHelper test = new XMLHelper();

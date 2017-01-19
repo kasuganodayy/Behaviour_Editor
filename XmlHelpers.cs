@@ -25,6 +25,8 @@ namespace Behaviour_Editor
             XmlSerializerNamespaces xmlNS = new XmlSerializerNamespaces(new XmlQualifiedName[] { new XmlQualifiedName(string.Empty, "urn:Objects") });
 
             serializer.Serialize(xmlWriter, objects, xmlNS);
+
+            xmlStream.Close();
         }
 
         public Objects DeserialzeXML(string filePath, Objects objects)
@@ -41,6 +43,8 @@ namespace Behaviour_Editor
             {
                 MessageBox.Show(ex.Message, ex.GetType().FullName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            xmlStream.Close();
 
             return objects;
         }
