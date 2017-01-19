@@ -50,7 +50,7 @@ namespace Behaviour_Editor
 
         public void DeserialzeXML(string filePath, List<Npc>Npcs)
         {
-            XmlSerializer serializer = new XmlSerializer(Npcs.GetType(), new XmlRootAttribute("Npc"));
+            XmlSerializer serializer = new XmlSerializer(Npcs.GetType(), new XmlRootAttribute("Npcs"));
             XmlReaderSettings xmlSettings = new XmlReaderSettings();
             xmlSettings.CheckCharacters = false;
 

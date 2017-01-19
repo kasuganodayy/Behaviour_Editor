@@ -60,7 +60,7 @@ namespace Behaviour_Editor
 
             // Serialize XML
             XMLHelper test = new XMLHelper();
-            test.SerializeXML("xml/test.xml", Npcs);
+            test.SerializeXML("xml/test_serialize.xml", Npcs);
             
             button2.Click += button2_Click;
             button2.Enabled = true;
@@ -73,7 +73,7 @@ namespace Behaviour_Editor
 
             // Load XML
             XMLHelper test = new XMLHelper();
-            test.DeserialzeXML("xml/test.xml", Npcs);
+            test.DeserialzeXML("xml/Objects.xml", Npcs);
 
             button3.Click += button3_Click;
             button3.Enabled = true;

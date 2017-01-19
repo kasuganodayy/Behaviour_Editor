@@ -23,18 +23,5 @@ namespace Behaviour_Editor
         public List<worldObjects> objectOwned { get; set; }
         [XmlElement("InitialSchedule")]
         public schedule actionSchedule { get; set; }
-
-        //private XmlSerializerNamespaces _namespace;
-
-        public Npc()
-        {
-            //this._namespace = new XmlSerializerNamespaces(new XmlQualifiedName[] { new XmlQualifiedName(string.Empty, "urn:Objects") });
-        }
-
-        //[XmlNamespaceDeclarations]
-        //public XmlSerializerNamespaces NameSpaces
-        //{
-        //    get { return this._namespace; }
-        //}
     }
 }
