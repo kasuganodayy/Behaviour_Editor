@@ -7,7 +7,8 @@ Alot of comment-out code from when I was trying it out with Microsoft's examples
 - [x] Create XML file with the same layout of Objects.xml
 - [x] Load data from Objects.xml
 - [ ] Create text boxes that outputs loaded data from Objects.xml
-- [ ] Create listbox of objects
+- [x] Create listbox of objects
+- [ ] Figure out a way to output ObjectOwnership
 - [x] Feature file save
 
 - [ ] Actually learn XML
