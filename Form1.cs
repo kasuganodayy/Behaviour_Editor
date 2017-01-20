@@ -67,6 +67,22 @@ namespace Behaviour_Editor
             box_colourG.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.g.ToString();
             box_colourB.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.b.ToString();
             box_colourA.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.a.ToString();
+
+            try
+            {
+                ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ToList();
+            }
+            catch(Exception ex)
+            {
+                if(ex.GetType().ToString() == "System.NullReferenceException")
+                {
+                    ownershipGrid.DataSource = null;
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
         }
 
         private void CheckTextBox_Number(TextBox box)
@@ -124,6 +140,37 @@ namespace Behaviour_Editor
         private void box_colourA_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckPressedKey_Number(e);
+        }
+
+        private void button_OwnershipAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ContainsKey(box_OwnershipAddKey.Text) == false &&
+                    objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ContainsValue(box_OwnershipAddValue.Text) == false)
+                {
+                    objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.Add(box_OwnershipAddKey.Text, box_OwnershipAddValue.Text);
+
+                    ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Key or Value already exists.", "Ownership duplicate");
+                }
+            }
+            catch(Exception ex)
+            {
+                if(ex.GetType().ToString() == "System.NullReferenceException")
+                {
+                    objects.Npcs[list_npc.SelectedIndex].m_objectOwned = new OwnedObjects(box_OwnershipAddKey.Text, box_OwnershipAddValue.Text);
+
+                    ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ToList();
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
         }
     }
 }

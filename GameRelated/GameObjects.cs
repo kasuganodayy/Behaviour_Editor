@@ -44,8 +44,10 @@ namespace Behaviour_Editor
         public OwnedObjects(string _type, string _name)
         {
             // Obsolete: Left over from List<OwnedObjects> version. (Before GitHub "8a83b88" Commit)
-            //m_type = _type;
-            //m_name = _name;
+            m_attributes = new Dictionary<string, string>()
+            {
+                {_type, _name }
+            };
         }
     }
 
