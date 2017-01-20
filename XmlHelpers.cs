@@ -12,7 +12,7 @@ namespace Behaviour_Editor
 {
     public class XMLHelper
     {
-        public void SerializeXML(string filePath, Objects objects)
+        public void SerializeObjects(string filePath, Objects objects)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Objects));
             XmlWriterSettings xmlSettings = new XmlWriterSettings();
@@ -29,7 +29,7 @@ namespace Behaviour_Editor
             xmlStream.Close();
         }
 
-        public Objects DeserialzeXML(string filePath, Objects objects)
+        public Objects DeserialzeObjects(string filePath, Objects objects)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Objects));
 

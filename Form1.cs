@@ -31,7 +31,11 @@ namespace Behaviour_Editor
 
             // Serialize XML
             XMLHelper test = new XMLHelper();
-            test.SerializeXML(filePath, objects);
+            test.SerializeObjects(filePath, objects);
+
+            list_npc.DataSource = null;
+            list_npc.DataSource = objects.Npcs;
+            list_npc.DisplayMember = "m_name";
             
             button_Save.Click += button_Save_Click;
             button_Save.Enabled = true;
@@ -41,11 +45,27 @@ namespace Behaviour_Editor
         {
             button_Load.Click -= button_Load_Click;
             button_Load.Enabled = false;
-            button_Save.Enabled = true; // Enable Save button only after loading a file
+            // Enable editor after loading a file
+            button_NPCNew.Enabled = true;
+            button_NPCDelete.Enabled = true;
+            box_name.Enabled = true;
+            box_schedule.Enabled = true;
+            box_shapeX.Enabled = true;
+            box_shapeY.Enabled = true;
+            box_facingX.Enabled = true;
+            box_facingY.Enabled = true;
+            box_colourR.Enabled = true;
+            box_colourG.Enabled = true;
+            box_colourB.Enabled = true;
+            box_colourA.Enabled = true;
+            box_OwnershipAddKey.Enabled = true;
+            box_OwnershipAddValue.Enabled = true;
+            button_OwnershipAdd.Enabled = true;
+            button_Save.Enabled = true;
 
             // Load XML
             XMLHelper test = new XMLHelper();
-            objects = test.DeserialzeXML(filePath, objects);
+            objects = test.DeserialzeObjects(filePath, objects);
 
             list_npc.DataSource = objects.Npcs;
             list_npc.DisplayMember = "m_name";
@@ -57,6 +77,10 @@ namespace Behaviour_Editor
 
         private void list_npc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(list_npc.SelectedIndex < 0)
+            {
+                return;
+            }
             box_name.Text = objects.Npcs[list_npc.SelectedIndex].m_name;
             box_schedule.Text = objects.Npcs[list_npc.SelectedIndex].m_actionSchedule.m_name;
             box_shapeX.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.x.ToString();
@@ -171,6 +195,26 @@ namespace Behaviour_Editor
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
+        }
+
+        private void button_NPCNew_Click(object sender, EventArgs e)
+        {
+            objects.Npcs.Add(new Npc() { m_name = "NewNPC",
+                                         m_pos = new Vector2(0, 0),
+                                         m_facing = new Vector2(0, 0),
+                                         m_colour = new Colour(0, 0, 0, 255),
+                                         m_actionSchedule = new ActionSchedule("null")});
+            list_npc.DataSource = null;
+            list_npc.DataSource = objects.Npcs;
+            list_npc.DisplayMember = "m_name";
+        }
+
+        private void button_NPCDelete_Click(object sender, EventArgs e)
+        {
+            objects.Npcs.Remove(objects.Npcs[list_npc.SelectedIndex]);
+            list_npc.DataSource = null;
+            list_npc.DataSource = objects.Npcs;
+            list_npc.DisplayMember = "m_name";
         }
     }
 }

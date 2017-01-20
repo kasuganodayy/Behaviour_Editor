@@ -66,6 +66,8 @@
             this.box_OwnershipAddKey = new System.Windows.Forms.TextBox();
             this.box_OwnershipAddValue = new System.Windows.Forms.TextBox();
             this.button_OwnershipAdd = new System.Windows.Forms.Button();
+            this.button_NPCNew = new System.Windows.Forms.Button();
+            this.button_NPCDelete = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ownershipGrid)).BeginInit();
@@ -110,6 +112,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button_NPCDelete);
+            this.tabPage1.Controls.Add(this.button_NPCNew);
             this.tabPage1.Controls.Add(this.button_OwnershipAdd);
             this.tabPage1.Controls.Add(this.box_OwnershipAddValue);
             this.tabPage1.Controls.Add(this.box_OwnershipAddKey);
@@ -176,7 +180,8 @@
             // 
             this.box_schedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_schedule.Location = new System.Drawing.Point(511, 18);
+            this.box_schedule.Enabled = false;
+            this.box_schedule.Location = new System.Drawing.Point(248, 130);
             this.box_schedule.Name = "box_schedule";
             this.box_schedule.Size = new System.Drawing.Size(176, 19);
             this.box_schedule.TabIndex = 23;
@@ -187,7 +192,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(509, 3);
+            this.label13.Location = new System.Drawing.Point(246, 115);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(83, 12);
             this.label13.TabIndex = 22;
@@ -197,7 +202,8 @@
             // 
             this.box_colourA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_colourA.Location = new System.Drawing.Point(423, 129);
+            this.box_colourA.Enabled = false;
+            this.box_colourA.Location = new System.Drawing.Point(673, 130);
             this.box_colourA.Name = "box_colourA";
             this.box_colourA.Size = new System.Drawing.Size(31, 19);
             this.box_colourA.TabIndex = 21;
@@ -207,7 +213,8 @@
             // 
             this.box_colourB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_colourB.Location = new System.Drawing.Point(369, 129);
+            this.box_colourB.Enabled = false;
+            this.box_colourB.Location = new System.Drawing.Point(619, 130);
             this.box_colourB.Name = "box_colourB";
             this.box_colourB.Size = new System.Drawing.Size(31, 19);
             this.box_colourB.TabIndex = 20;
@@ -217,7 +224,8 @@
             // 
             this.box_colourG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_colourG.Location = new System.Drawing.Point(315, 129);
+            this.box_colourG.Enabled = false;
+            this.box_colourG.Location = new System.Drawing.Point(565, 130);
             this.box_colourG.Name = "box_colourG";
             this.box_colourG.Size = new System.Drawing.Size(31, 19);
             this.box_colourG.TabIndex = 19;
@@ -227,7 +235,8 @@
             // 
             this.box_colourR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_colourR.Location = new System.Drawing.Point(261, 129);
+            this.box_colourR.Enabled = false;
+            this.box_colourR.Location = new System.Drawing.Point(511, 130);
             this.box_colourR.Name = "box_colourR";
             this.box_colourR.Size = new System.Drawing.Size(31, 19);
             this.box_colourR.TabIndex = 18;
@@ -238,7 +247,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(406, 132);
+            this.label12.Location = new System.Drawing.Point(656, 133);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(11, 12);
             this.label12.TabIndex = 17;
@@ -249,7 +258,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(352, 132);
+            this.label11.Location = new System.Drawing.Point(602, 133);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(11, 12);
             this.label11.TabIndex = 16;
@@ -260,7 +269,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(298, 132);
+            this.label10.Location = new System.Drawing.Point(548, 133);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(11, 12);
             this.label10.TabIndex = 15;
@@ -271,7 +280,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(246, 132);
+            this.label9.Location = new System.Drawing.Point(496, 133);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(9, 12);
             this.label9.TabIndex = 14;
@@ -282,7 +291,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(244, 114);
+            this.label8.Location = new System.Drawing.Point(494, 115);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 12);
             this.label8.TabIndex = 13;
@@ -292,7 +301,8 @@
             // 
             this.box_facingY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_facingY.Location = new System.Drawing.Point(315, 92);
+            this.box_facingY.Enabled = false;
+            this.box_facingY.Location = new System.Drawing.Point(565, 93);
             this.box_facingY.Name = "box_facingY";
             this.box_facingY.Size = new System.Drawing.Size(31, 19);
             this.box_facingY.TabIndex = 12;
@@ -303,7 +313,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(298, 95);
+            this.label7.Location = new System.Drawing.Point(548, 96);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(11, 12);
             this.label7.TabIndex = 11;
@@ -313,7 +323,8 @@
             // 
             this.box_facingX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_facingX.Location = new System.Drawing.Point(261, 92);
+            this.box_facingX.Enabled = false;
+            this.box_facingX.Location = new System.Drawing.Point(511, 93);
             this.box_facingX.Name = "box_facingX";
             this.box_facingX.Size = new System.Drawing.Size(31, 19);
             this.box_facingX.TabIndex = 10;
@@ -324,7 +335,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(244, 95);
+            this.label6.Location = new System.Drawing.Point(494, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(11, 12);
             this.label6.TabIndex = 9;
@@ -335,7 +346,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(244, 77);
+            this.label5.Location = new System.Drawing.Point(494, 78);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 12);
             this.label5.TabIndex = 8;
@@ -345,7 +356,8 @@
             // 
             this.box_shapeY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_shapeY.Location = new System.Drawing.Point(315, 55);
+            this.box_shapeY.Enabled = false;
+            this.box_shapeY.Location = new System.Drawing.Point(565, 56);
             this.box_shapeY.Name = "box_shapeY";
             this.box_shapeY.Size = new System.Drawing.Size(31, 19);
             this.box_shapeY.TabIndex = 7;
@@ -356,7 +368,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(298, 58);
+            this.label4.Location = new System.Drawing.Point(548, 59);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 12);
             this.label4.TabIndex = 6;
@@ -366,7 +378,8 @@
             // 
             this.box_shapeX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_shapeX.Location = new System.Drawing.Point(261, 55);
+            this.box_shapeX.Enabled = false;
+            this.box_shapeX.Location = new System.Drawing.Point(511, 56);
             this.box_shapeX.Name = "box_shapeX";
             this.box_shapeX.Size = new System.Drawing.Size(31, 19);
             this.box_shapeX.TabIndex = 5;
@@ -377,7 +390,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(244, 58);
+            this.label3.Location = new System.Drawing.Point(494, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 12);
             this.label3.TabIndex = 4;
@@ -388,7 +401,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(244, 40);
+            this.label2.Location = new System.Drawing.Point(494, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 3;
@@ -398,7 +411,8 @@
             // 
             this.box_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_name.Location = new System.Drawing.Point(246, 18);
+            this.box_name.Enabled = false;
+            this.box_name.Location = new System.Drawing.Point(248, 93);
             this.box_name.Name = "box_name";
             this.box_name.Size = new System.Drawing.Size(176, 19);
             this.box_name.TabIndex = 2;
@@ -409,7 +423,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(244, 3);
+            this.label1.Location = new System.Drawing.Point(246, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 12);
             this.label1.TabIndex = 1;
@@ -484,6 +498,7 @@
             // box_OwnershipAddKey
             // 
             this.box_OwnershipAddKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.box_OwnershipAddKey.Enabled = false;
             this.box_OwnershipAddKey.Location = new System.Drawing.Point(352, 269);
             this.box_OwnershipAddKey.Name = "box_OwnershipAddKey";
             this.box_OwnershipAddKey.Size = new System.Drawing.Size(151, 19);
@@ -492,6 +507,7 @@
             // box_OwnershipAddValue
             // 
             this.box_OwnershipAddValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.box_OwnershipAddValue.Enabled = false;
             this.box_OwnershipAddValue.Location = new System.Drawing.Point(549, 269);
             this.box_OwnershipAddValue.Name = "box_OwnershipAddValue";
             this.box_OwnershipAddValue.Size = new System.Drawing.Size(151, 19);
@@ -500,6 +516,7 @@
             // button_OwnershipAdd
             // 
             this.button_OwnershipAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_OwnershipAdd.Enabled = false;
             this.button_OwnershipAdd.Location = new System.Drawing.Point(568, 303);
             this.button_OwnershipAdd.Name = "button_OwnershipAdd";
             this.button_OwnershipAdd.Size = new System.Drawing.Size(132, 23);
@@ -507,6 +524,30 @@
             this.button_OwnershipAdd.Text = "Add Object Ownership";
             this.button_OwnershipAdd.UseVisualStyleBackColor = true;
             this.button_OwnershipAdd.Click += new System.EventHandler(this.button_OwnershipAdd_Click);
+            // 
+            // button_NPCNew
+            // 
+            this.button_NPCNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_NPCNew.Enabled = false;
+            this.button_NPCNew.Location = new System.Drawing.Point(248, 7);
+            this.button_NPCNew.Name = "button_NPCNew";
+            this.button_NPCNew.Size = new System.Drawing.Size(97, 23);
+            this.button_NPCNew.TabIndex = 32;
+            this.button_NPCNew.Text = "New NPC";
+            this.button_NPCNew.UseVisualStyleBackColor = true;
+            this.button_NPCNew.Click += new System.EventHandler(this.button_NPCNew_Click);
+            // 
+            // button_NPCDelete
+            // 
+            this.button_NPCDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_NPCDelete.Enabled = false;
+            this.button_NPCDelete.Location = new System.Drawing.Point(248, 36);
+            this.button_NPCDelete.Name = "button_NPCDelete";
+            this.button_NPCDelete.Size = new System.Drawing.Size(97, 23);
+            this.button_NPCDelete.TabIndex = 33;
+            this.button_NPCDelete.Text = "Delete NPC";
+            this.button_NPCDelete.UseVisualStyleBackColor = true;
+            this.button_NPCDelete.Click += new System.EventHandler(this.button_NPCDelete_Click);
             // 
             // Form1
             // 
@@ -567,6 +608,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button_NPCDelete;
+        private System.Windows.Forms.Button button_NPCNew;
     }
 }
 
