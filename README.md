@@ -6,9 +6,11 @@ Alot of comment-out code from when I was trying it out with Microsoft's examples
 ### TODO:
 - [x] Create XML file with the same layout of Objects.xml
 - [x] Load data from Objects.xml
-- [ ] Create text boxes that outputs loaded data from Objects.xml
+- [x] Create text boxes that outputs loaded data from Objects.xml
 - [x] Create listbox of objects
 - [x] Figure out a way to output ObjectOwnership
 - [x] Feature file save
+
+- [ ] Now do the same thing for ActionSchedules
 
 - [ ] Actually learn XML
