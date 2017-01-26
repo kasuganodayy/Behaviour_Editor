@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace Behaviour_Editor
 {
+    [XmlType("Action")]
     public class Action
     {
         [XmlAttribute("name")]
@@ -27,6 +28,7 @@ namespace Behaviour_Editor
         public decimal m_weight;
     }
 
+    [XmlType("ScheduleEntryTemplate")]
     public class ActionEntry
     {
         [XmlAttribute("name")]
@@ -41,6 +43,7 @@ namespace Behaviour_Editor
         public ScheduledAction scheAction;
     }
 
+    [XmlType("Schedule")]
     public class Schedule
     {
         [XmlAttribute("name")]

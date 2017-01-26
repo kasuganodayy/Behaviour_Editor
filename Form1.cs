@@ -13,15 +13,50 @@ namespace Behaviour_Editor
     public partial class Form1 : Form
     {
         public string filePath = "xml/Objects.xml";
-        public Objects objects = new Objects();
+        public Objects objects;
+        public Scheduling scheduling;
 
         public Form1()
         {
             InitializeComponent();
+            EnableNpcsEditor(false);
+            EnableSchedulingEditor(false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void EnableNpcsEditor(bool flag)
+        {
+            button_NPCNew.Enabled = flag;
+            button_NPCDelete.Enabled = flag;
+            box_name.Enabled = flag;
+            box_schedule.Enabled = flag;
+            box_shapeX.Enabled = flag;
+            box_shapeY.Enabled = flag;
+            box_facingX.Enabled = flag;
+            box_facingY.Enabled = flag;
+            box_colourR.Enabled = flag;
+            box_colourG.Enabled = flag;
+            box_colourB.Enabled = flag;
+            box_colourA.Enabled = flag;
+            box_OwnershipAddKey.Enabled = flag;
+            box_OwnershipAddValue.Enabled = flag;
+            button_OwnershipAdd.Enabled = flag;
+        }
+
+        private void EnableSchedulingEditor(bool flag)
+        {
+            button_SchedulingSub_ActionAdd.Enabled = flag;
+            button_SchedulingSub_ActionDelete.Enabled = flag;
+            textBox_SchedulingSub_ActionName.Enabled = flag;
+            textBox_SchedulingSub_ActionTarget.Enabled = flag;
+            textBox_SchedulingSub_ActionMinDur.Enabled = flag;
+            textBox_SchedulingSub_ActionMaxDur.Enabled = flag;
+            textBox_SchedulingSub_TemplateName.Enabled = flag;
+            textBox_SchedulingSub_TemplateType.Enabled = flag;
+            dataGridView_SchedulingSub_TemplateActions.Enabled = flag;
         }
 
         private void button_Save_Click(object sender, EventArgs e)
@@ -30,8 +65,7 @@ namespace Behaviour_Editor
             button_Save.Enabled = false;
 
             // Serialize XML
-            XMLHelper test = new XMLHelper();
-            test.SerializeObjects(filePath, objects);
+            XMLHelper.SerializeObjects(filePath, objects);
 
             list_npc.DataSource = null;
             list_npc.DataSource = objects.Npcs;
@@ -45,32 +79,29 @@ namespace Behaviour_Editor
         {
             button_Load.Click -= button_Load_Click;
             button_Load.Enabled = false;
-            // Enable editor after loading a file
-            button_NPCNew.Enabled = true;
-            button_NPCDelete.Enabled = true;
-            box_name.Enabled = true;
-            box_schedule.Enabled = true;
-            box_shapeX.Enabled = true;
-            box_shapeY.Enabled = true;
-            box_facingX.Enabled = true;
-            box_facingY.Enabled = true;
-            box_colourR.Enabled = true;
-            box_colourG.Enabled = true;
-            box_colourB.Enabled = true;
-            box_colourA.Enabled = true;
-            box_OwnershipAddKey.Enabled = true;
-            box_OwnershipAddValue.Enabled = true;
-            button_OwnershipAdd.Enabled = true;
-            button_Save.Enabled = true;
 
             // Load XML
-            XMLHelper test = new XMLHelper();
-            objects = test.DeserialzeObjects(filePath, objects);
+            objects = XMLHelper.DeserialzeObjects(filePath, objects);
+            scheduling = XMLHelper.DeserializeSchedules("xml/Schedules.xml", scheduling);
+            if(objects != null && scheduling != null)
+            {
+                // Enable editor after loading a file
+                EnableNpcsEditor(true);
+                EnableSchedulingEditor(true);
 
-            list_npc.DataSource = objects.Npcs;
-            list_npc.DisplayMember = "m_name";
-            list_gameObj.DataSource = objects.GameObjects;
-            list_gameObj.DisplayMember = "m_name";
+
+                button_Save.Enabled = true;
+
+                list_npc.DataSource = objects.Npcs;
+                list_npc.DisplayMember = "m_name";
+                list_gameObj.DataSource = objects.GameObjects;
+                list_gameObj.DisplayMember = "m_name";
+            }
+            else
+            {
+                // Enable Load button on fail
+                button_Load.Enabled = true;
+            }
 
             button_Load.Click += button_Load_Click;
         }
@@ -165,6 +196,14 @@ namespace Behaviour_Editor
         {
             CheckPressedKey_Number(e);
         }
+        private void textBox_SchedulingSub_ActionMinDur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(e);
+        }
+        private void textBox_SchedulingSub_ActionMaxDur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(e);
+        }
 
         private void button_OwnershipAdd_Click(object sender, EventArgs e)
         {
@@ -196,7 +235,6 @@ namespace Behaviour_Editor
                 }
             }
         }
-
         private void button_NPCNew_Click(object sender, EventArgs e)
         {
             objects.Npcs.Add(new Npc() { m_name = "NewNPC",
@@ -208,7 +246,6 @@ namespace Behaviour_Editor
             list_npc.DataSource = objects.Npcs;
             list_npc.DisplayMember = "m_name";
         }
-
         private void button_NPCDelete_Click(object sender, EventArgs e)
         {
             objects.Npcs.Remove(objects.Npcs[list_npc.SelectedIndex]);
@@ -216,5 +253,6 @@ namespace Behaviour_Editor
             list_npc.DataSource = objects.Npcs;
             list_npc.DisplayMember = "m_name";
         }
+
     }
 }

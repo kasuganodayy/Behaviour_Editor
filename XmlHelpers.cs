@@ -12,7 +12,7 @@ namespace Behaviour_Editor
 {
     public class XMLHelper
     {
-        public void SerializeObjects(string filePath, Objects objects)
+        static public void SerializeObjects(string filePath, Objects objects)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Objects));
             XmlWriterSettings xmlSettings = new XmlWriterSettings();
@@ -29,24 +29,42 @@ namespace Behaviour_Editor
             xmlStream.Close();
         }
 
-        public Objects DeserialzeObjects(string filePath, Objects objects)
+        static public Objects DeserialzeObjects(string filePath, Objects objects)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Objects));
 
-            FileStream xmlStream = new FileStream(filePath, FileMode.Open);
-
             try
             {
+                FileStream xmlStream = new FileStream(filePath, FileMode.Open);
+
                 objects = (Objects)serializer.Deserialize(xmlStream);
+                xmlStream.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().FullName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            xmlStream.Close();
-
             return objects;
+        }
+
+        static public Scheduling DeserializeSchedules(string filePath, Scheduling scheduling)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Scheduling));
+
+            try
+            {
+                FileStream xmlStream = new FileStream(filePath, FileMode.Open);
+
+                scheduling = (Scheduling)serializer.Deserialize(xmlStream);
+                xmlStream.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().FullName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return scheduling;
         }
     }
 }

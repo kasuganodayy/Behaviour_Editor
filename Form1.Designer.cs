@@ -30,8 +30,16 @@
         {
             this.button_Save = new System.Windows.Forms.Button();
             this.button_Load = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabCon_Main = new System.Windows.Forms.TabControl();
+            this.tab_Npcs = new System.Windows.Forms.TabPage();
+            this.button_NPCDelete = new System.Windows.Forms.Button();
+            this.button_NPCNew = new System.Windows.Forms.Button();
+            this.button_OwnershipAdd = new System.Windows.Forms.Button();
+            this.box_OwnershipAddValue = new System.Windows.Forms.TextBox();
+            this.box_OwnershipAddKey = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.ownershipGrid = new System.Windows.Forms.DataGridView();
             this.box_schedule = new System.Windows.Forms.TextBox();
@@ -58,20 +66,42 @@
             this.box_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.list_npc = new System.Windows.Forms.ListBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_GameObjects = new System.Windows.Forms.TabPage();
             this.list_gameObj = new System.Windows.Forms.ListBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.box_OwnershipAddKey = new System.Windows.Forms.TextBox();
-            this.box_OwnershipAddValue = new System.Windows.Forms.TextBox();
-            this.button_OwnershipAdd = new System.Windows.Forms.Button();
-            this.button_NPCNew = new System.Windows.Forms.Button();
-            this.button_NPCDelete = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tab_Scheduling = new System.Windows.Forms.TabPage();
+            this.tabCon_Scheduling = new System.Windows.Forms.TabControl();
+            this.tab_SchedulingSub_Actions = new System.Windows.Forms.TabPage();
+            this.tab_SchedulingSub_Templates = new System.Windows.Forms.TabPage();
+            this.tab_SchedulingSub_Schedules = new System.Windows.Forms.TabPage();
+            this.list_SchedulingSub_Actions = new System.Windows.Forms.ListBox();
+            this.list_SchedulingSub_Templates = new System.Windows.Forms.ListBox();
+            this.list_SchedulingSub_Schedules = new System.Windows.Forms.ListBox();
+            this.label_SchedulingSub_ActionsName = new System.Windows.Forms.Label();
+            this.textBox_SchedulingSub_ActionName = new System.Windows.Forms.TextBox();
+            this.label_SchedulingSub_ActionTarget = new System.Windows.Forms.Label();
+            this.textBox_SchedulingSub_ActionTarget = new System.Windows.Forms.TextBox();
+            this.label_SchedulingSub_ActionMinDur = new System.Windows.Forms.Label();
+            this.textBox_SchedulingSub_ActionMinDur = new System.Windows.Forms.TextBox();
+            this.label_SchedulingSub_ActionMaxDur = new System.Windows.Forms.Label();
+            this.textBox_SchedulingSub_ActionMaxDur = new System.Windows.Forms.TextBox();
+            this.button_SchedulingSub_ActionAdd = new System.Windows.Forms.Button();
+            this.button_SchedulingSub_ActionDelete = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox_SchedulingSub_TemplateName = new System.Windows.Forms.TextBox();
+            this.textBox_SchedulingSub_TemplateType = new System.Windows.Forms.TextBox();
+            this.dataGridView_SchedulingSub_TemplateActions = new System.Windows.Forms.DataGridView();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tabCon_Main.SuspendLayout();
+            this.tab_Npcs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ownershipGrid)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tab_GameObjects.SuspendLayout();
+            this.tab_Scheduling.SuspendLayout();
+            this.tabCon_Scheduling.SuspendLayout();
+            this.tab_SchedulingSub_Actions.SuspendLayout();
+            this.tab_SchedulingSub_Templates.SuspendLayout();
+            this.tab_SchedulingSub_Schedules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SchedulingSub_TemplateActions)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Save
@@ -88,7 +118,7 @@
             // 
             // button_Load
             // 
-            this.button_Load.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_Load.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Load.Location = new System.Drawing.Point(527, 387);
             this.button_Load.Name = "button_Load";
             this.button_Load.Size = new System.Drawing.Size(97, 23);
@@ -97,62 +127,147 @@
             this.button_Load.UseVisualStyleBackColor = true;
             this.button_Load.Click += new System.EventHandler(this.button_Load_Click);
             // 
-            // tabControl1
+            // tabCon_Main
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabCon_Main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(741, 368);
-            this.tabControl1.TabIndex = 4;
+            this.tabCon_Main.Controls.Add(this.tab_Npcs);
+            this.tabCon_Main.Controls.Add(this.tab_GameObjects);
+            this.tabCon_Main.Controls.Add(this.tab_Scheduling);
+            this.tabCon_Main.Location = new System.Drawing.Point(12, 12);
+            this.tabCon_Main.Name = "tabCon_Main";
+            this.tabCon_Main.SelectedIndex = 0;
+            this.tabCon_Main.Size = new System.Drawing.Size(741, 368);
+            this.tabCon_Main.TabIndex = 4;
             // 
-            // tabPage1
+            // tab_Npcs
             // 
-            this.tabPage1.Controls.Add(this.button_NPCDelete);
-            this.tabPage1.Controls.Add(this.button_NPCNew);
-            this.tabPage1.Controls.Add(this.button_OwnershipAdd);
-            this.tabPage1.Controls.Add(this.box_OwnershipAddValue);
-            this.tabPage1.Controls.Add(this.box_OwnershipAddKey);
-            this.tabPage1.Controls.Add(this.label17);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.ownershipGrid);
-            this.tabPage1.Controls.Add(this.box_schedule);
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.box_colourA);
-            this.tabPage1.Controls.Add(this.box_colourB);
-            this.tabPage1.Controls.Add(this.box_colourG);
-            this.tabPage1.Controls.Add(this.box_colourR);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.box_facingY);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.box_facingX);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.box_shapeY);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.box_shapeX);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.box_name);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.list_npc);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(733, 342);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Npcs";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tab_Npcs.Controls.Add(this.button_NPCDelete);
+            this.tab_Npcs.Controls.Add(this.button_NPCNew);
+            this.tab_Npcs.Controls.Add(this.button_OwnershipAdd);
+            this.tab_Npcs.Controls.Add(this.box_OwnershipAddValue);
+            this.tab_Npcs.Controls.Add(this.box_OwnershipAddKey);
+            this.tab_Npcs.Controls.Add(this.label17);
+            this.tab_Npcs.Controls.Add(this.label16);
+            this.tab_Npcs.Controls.Add(this.label15);
+            this.tab_Npcs.Controls.Add(this.label14);
+            this.tab_Npcs.Controls.Add(this.ownershipGrid);
+            this.tab_Npcs.Controls.Add(this.box_schedule);
+            this.tab_Npcs.Controls.Add(this.label13);
+            this.tab_Npcs.Controls.Add(this.box_colourA);
+            this.tab_Npcs.Controls.Add(this.box_colourB);
+            this.tab_Npcs.Controls.Add(this.box_colourG);
+            this.tab_Npcs.Controls.Add(this.box_colourR);
+            this.tab_Npcs.Controls.Add(this.label12);
+            this.tab_Npcs.Controls.Add(this.label11);
+            this.tab_Npcs.Controls.Add(this.label10);
+            this.tab_Npcs.Controls.Add(this.label9);
+            this.tab_Npcs.Controls.Add(this.label8);
+            this.tab_Npcs.Controls.Add(this.box_facingY);
+            this.tab_Npcs.Controls.Add(this.label7);
+            this.tab_Npcs.Controls.Add(this.box_facingX);
+            this.tab_Npcs.Controls.Add(this.label6);
+            this.tab_Npcs.Controls.Add(this.label5);
+            this.tab_Npcs.Controls.Add(this.box_shapeY);
+            this.tab_Npcs.Controls.Add(this.label4);
+            this.tab_Npcs.Controls.Add(this.box_shapeX);
+            this.tab_Npcs.Controls.Add(this.label3);
+            this.tab_Npcs.Controls.Add(this.label2);
+            this.tab_Npcs.Controls.Add(this.box_name);
+            this.tab_Npcs.Controls.Add(this.label1);
+            this.tab_Npcs.Controls.Add(this.list_npc);
+            this.tab_Npcs.Location = new System.Drawing.Point(4, 22);
+            this.tab_Npcs.Name = "tab_Npcs";
+            this.tab_Npcs.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Npcs.Size = new System.Drawing.Size(733, 342);
+            this.tab_Npcs.TabIndex = 0;
+            this.tab_Npcs.Text = "Npcs";
+            this.tab_Npcs.UseVisualStyleBackColor = true;
+            // 
+            // button_NPCDelete
+            // 
+            this.button_NPCDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_NPCDelete.Enabled = false;
+            this.button_NPCDelete.Location = new System.Drawing.Point(248, 36);
+            this.button_NPCDelete.Name = "button_NPCDelete";
+            this.button_NPCDelete.Size = new System.Drawing.Size(97, 23);
+            this.button_NPCDelete.TabIndex = 33;
+            this.button_NPCDelete.Text = "Delete NPC";
+            this.button_NPCDelete.UseVisualStyleBackColor = true;
+            this.button_NPCDelete.Click += new System.EventHandler(this.button_NPCDelete_Click);
+            // 
+            // button_NPCNew
+            // 
+            this.button_NPCNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_NPCNew.Enabled = false;
+            this.button_NPCNew.Location = new System.Drawing.Point(248, 7);
+            this.button_NPCNew.Name = "button_NPCNew";
+            this.button_NPCNew.Size = new System.Drawing.Size(97, 23);
+            this.button_NPCNew.TabIndex = 32;
+            this.button_NPCNew.Text = "New NPC";
+            this.button_NPCNew.UseVisualStyleBackColor = true;
+            this.button_NPCNew.Click += new System.EventHandler(this.button_NPCNew_Click);
+            // 
+            // button_OwnershipAdd
+            // 
+            this.button_OwnershipAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_OwnershipAdd.Enabled = false;
+            this.button_OwnershipAdd.Location = new System.Drawing.Point(568, 303);
+            this.button_OwnershipAdd.Name = "button_OwnershipAdd";
+            this.button_OwnershipAdd.Size = new System.Drawing.Size(132, 23);
+            this.button_OwnershipAdd.TabIndex = 31;
+            this.button_OwnershipAdd.Text = "Add Object Ownership";
+            this.button_OwnershipAdd.UseVisualStyleBackColor = true;
+            this.button_OwnershipAdd.Click += new System.EventHandler(this.button_OwnershipAdd_Click);
+            // 
+            // box_OwnershipAddValue
+            // 
+            this.box_OwnershipAddValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.box_OwnershipAddValue.Enabled = false;
+            this.box_OwnershipAddValue.Location = new System.Drawing.Point(549, 269);
+            this.box_OwnershipAddValue.Name = "box_OwnershipAddValue";
+            this.box_OwnershipAddValue.Size = new System.Drawing.Size(151, 19);
+            this.box_OwnershipAddValue.TabIndex = 30;
+            // 
+            // box_OwnershipAddKey
+            // 
+            this.box_OwnershipAddKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.box_OwnershipAddKey.Enabled = false;
+            this.box_OwnershipAddKey.Location = new System.Drawing.Point(352, 269);
+            this.box_OwnershipAddKey.Name = "box_OwnershipAddKey";
+            this.box_OwnershipAddKey.Size = new System.Drawing.Size(151, 19);
+            this.box_OwnershipAddKey.TabIndex = 29;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(509, 272);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(34, 12);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Value";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(322, 272);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(24, 12);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Key";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(298, 252);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(119, 12);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Add Object Ownership";
             // 
             // label14
             // 
@@ -442,16 +557,16 @@
             this.list_npc.TabIndex = 0;
             this.list_npc.SelectedIndexChanged += new System.EventHandler(this.list_npc_SelectedIndexChanged);
             // 
-            // tabPage2
+            // tab_GameObjects
             // 
-            this.tabPage2.Controls.Add(this.list_gameObj);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(733, 342);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "GameObjects";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tab_GameObjects.Controls.Add(this.list_gameObj);
+            this.tab_GameObjects.Location = new System.Drawing.Point(4, 22);
+            this.tab_GameObjects.Name = "tab_GameObjects";
+            this.tab_GameObjects.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_GameObjects.Size = new System.Drawing.Size(733, 342);
+            this.tab_GameObjects.TabIndex = 1;
+            this.tab_GameObjects.Text = "GameObjects";
+            this.tab_GameObjects.UseVisualStyleBackColor = true;
             // 
             // list_gameObj
             // 
@@ -465,106 +580,308 @@
             this.list_gameObj.Size = new System.Drawing.Size(231, 328);
             this.list_gameObj.TabIndex = 0;
             // 
-            // label15
+            // tab_Scheduling
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(298, 252);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(119, 12);
-            this.label15.TabIndex = 26;
-            this.label15.Text = "Add Object Ownership";
+            this.tab_Scheduling.Controls.Add(this.tabCon_Scheduling);
+            this.tab_Scheduling.Location = new System.Drawing.Point(4, 22);
+            this.tab_Scheduling.Name = "tab_Scheduling";
+            this.tab_Scheduling.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Scheduling.Size = new System.Drawing.Size(733, 342);
+            this.tab_Scheduling.TabIndex = 2;
+            this.tab_Scheduling.Text = "Scheduling";
+            this.tab_Scheduling.UseVisualStyleBackColor = true;
             // 
-            // label16
+            // tabCon_Scheduling
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(322, 272);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(24, 12);
-            this.label16.TabIndex = 27;
-            this.label16.Text = "Key";
+            this.tabCon_Scheduling.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabCon_Scheduling.Controls.Add(this.tab_SchedulingSub_Actions);
+            this.tabCon_Scheduling.Controls.Add(this.tab_SchedulingSub_Templates);
+            this.tabCon_Scheduling.Controls.Add(this.tab_SchedulingSub_Schedules);
+            this.tabCon_Scheduling.Location = new System.Drawing.Point(6, 3);
+            this.tabCon_Scheduling.Name = "tabCon_Scheduling";
+            this.tabCon_Scheduling.SelectedIndex = 0;
+            this.tabCon_Scheduling.Size = new System.Drawing.Size(721, 333);
+            this.tabCon_Scheduling.TabIndex = 0;
             // 
-            // label17
+            // tab_SchedulingSub_Actions
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(509, 272);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(34, 12);
-            this.label17.TabIndex = 28;
-            this.label17.Text = "Value";
+            this.tab_SchedulingSub_Actions.Controls.Add(this.button_SchedulingSub_ActionDelete);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.button_SchedulingSub_ActionAdd);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.textBox_SchedulingSub_ActionMaxDur);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.label_SchedulingSub_ActionMaxDur);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.textBox_SchedulingSub_ActionMinDur);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.label_SchedulingSub_ActionMinDur);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.textBox_SchedulingSub_ActionTarget);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.label_SchedulingSub_ActionTarget);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.textBox_SchedulingSub_ActionName);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.label_SchedulingSub_ActionsName);
+            this.tab_SchedulingSub_Actions.Controls.Add(this.list_SchedulingSub_Actions);
+            this.tab_SchedulingSub_Actions.Location = new System.Drawing.Point(4, 22);
+            this.tab_SchedulingSub_Actions.Name = "tab_SchedulingSub_Actions";
+            this.tab_SchedulingSub_Actions.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_SchedulingSub_Actions.Size = new System.Drawing.Size(713, 307);
+            this.tab_SchedulingSub_Actions.TabIndex = 0;
+            this.tab_SchedulingSub_Actions.Text = "Actions";
+            this.tab_SchedulingSub_Actions.UseVisualStyleBackColor = true;
             // 
-            // box_OwnershipAddKey
+            // tab_SchedulingSub_Templates
             // 
-            this.box_OwnershipAddKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_OwnershipAddKey.Enabled = false;
-            this.box_OwnershipAddKey.Location = new System.Drawing.Point(352, 269);
-            this.box_OwnershipAddKey.Name = "box_OwnershipAddKey";
-            this.box_OwnershipAddKey.Size = new System.Drawing.Size(151, 19);
-            this.box_OwnershipAddKey.TabIndex = 29;
+            this.tab_SchedulingSub_Templates.Controls.Add(this.label20);
+            this.tab_SchedulingSub_Templates.Controls.Add(this.dataGridView_SchedulingSub_TemplateActions);
+            this.tab_SchedulingSub_Templates.Controls.Add(this.textBox_SchedulingSub_TemplateType);
+            this.tab_SchedulingSub_Templates.Controls.Add(this.textBox_SchedulingSub_TemplateName);
+            this.tab_SchedulingSub_Templates.Controls.Add(this.label19);
+            this.tab_SchedulingSub_Templates.Controls.Add(this.label18);
+            this.tab_SchedulingSub_Templates.Controls.Add(this.list_SchedulingSub_Templates);
+            this.tab_SchedulingSub_Templates.Location = new System.Drawing.Point(4, 22);
+            this.tab_SchedulingSub_Templates.Name = "tab_SchedulingSub_Templates";
+            this.tab_SchedulingSub_Templates.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_SchedulingSub_Templates.Size = new System.Drawing.Size(713, 307);
+            this.tab_SchedulingSub_Templates.TabIndex = 1;
+            this.tab_SchedulingSub_Templates.Text = "Templates";
+            this.tab_SchedulingSub_Templates.UseVisualStyleBackColor = true;
             // 
-            // box_OwnershipAddValue
+            // tab_SchedulingSub_Schedules
             // 
-            this.box_OwnershipAddValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.box_OwnershipAddValue.Enabled = false;
-            this.box_OwnershipAddValue.Location = new System.Drawing.Point(549, 269);
-            this.box_OwnershipAddValue.Name = "box_OwnershipAddValue";
-            this.box_OwnershipAddValue.Size = new System.Drawing.Size(151, 19);
-            this.box_OwnershipAddValue.TabIndex = 30;
+            this.tab_SchedulingSub_Schedules.Controls.Add(this.list_SchedulingSub_Schedules);
+            this.tab_SchedulingSub_Schedules.Location = new System.Drawing.Point(4, 22);
+            this.tab_SchedulingSub_Schedules.Name = "tab_SchedulingSub_Schedules";
+            this.tab_SchedulingSub_Schedules.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_SchedulingSub_Schedules.Size = new System.Drawing.Size(713, 307);
+            this.tab_SchedulingSub_Schedules.TabIndex = 2;
+            this.tab_SchedulingSub_Schedules.Text = "Schedules";
+            this.tab_SchedulingSub_Schedules.UseVisualStyleBackColor = true;
             // 
-            // button_OwnershipAdd
+            // list_SchedulingSub_Actions
             // 
-            this.button_OwnershipAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_OwnershipAdd.Enabled = false;
-            this.button_OwnershipAdd.Location = new System.Drawing.Point(568, 303);
-            this.button_OwnershipAdd.Name = "button_OwnershipAdd";
-            this.button_OwnershipAdd.Size = new System.Drawing.Size(132, 23);
-            this.button_OwnershipAdd.TabIndex = 31;
-            this.button_OwnershipAdd.Text = "Add Object Ownership";
-            this.button_OwnershipAdd.UseVisualStyleBackColor = true;
-            this.button_OwnershipAdd.Click += new System.EventHandler(this.button_OwnershipAdd_Click);
+            this.list_SchedulingSub_Actions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.list_SchedulingSub_Actions.FormattingEnabled = true;
+            this.list_SchedulingSub_Actions.ItemHeight = 12;
+            this.list_SchedulingSub_Actions.Location = new System.Drawing.Point(6, 6);
+            this.list_SchedulingSub_Actions.Name = "list_SchedulingSub_Actions";
+            this.list_SchedulingSub_Actions.Size = new System.Drawing.Size(213, 292);
+            this.list_SchedulingSub_Actions.TabIndex = 0;
             // 
-            // button_NPCNew
+            // list_SchedulingSub_Templates
             // 
-            this.button_NPCNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_NPCNew.Enabled = false;
-            this.button_NPCNew.Location = new System.Drawing.Point(248, 7);
-            this.button_NPCNew.Name = "button_NPCNew";
-            this.button_NPCNew.Size = new System.Drawing.Size(97, 23);
-            this.button_NPCNew.TabIndex = 32;
-            this.button_NPCNew.Text = "New NPC";
-            this.button_NPCNew.UseVisualStyleBackColor = true;
-            this.button_NPCNew.Click += new System.EventHandler(this.button_NPCNew_Click);
+            this.list_SchedulingSub_Templates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.list_SchedulingSub_Templates.FormattingEnabled = true;
+            this.list_SchedulingSub_Templates.ItemHeight = 12;
+            this.list_SchedulingSub_Templates.Location = new System.Drawing.Point(6, 6);
+            this.list_SchedulingSub_Templates.Name = "list_SchedulingSub_Templates";
+            this.list_SchedulingSub_Templates.Size = new System.Drawing.Size(213, 292);
+            this.list_SchedulingSub_Templates.TabIndex = 1;
             // 
-            // button_NPCDelete
+            // list_SchedulingSub_Schedules
             // 
-            this.button_NPCDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_NPCDelete.Enabled = false;
-            this.button_NPCDelete.Location = new System.Drawing.Point(248, 36);
-            this.button_NPCDelete.Name = "button_NPCDelete";
-            this.button_NPCDelete.Size = new System.Drawing.Size(97, 23);
-            this.button_NPCDelete.TabIndex = 33;
-            this.button_NPCDelete.Text = "Delete NPC";
-            this.button_NPCDelete.UseVisualStyleBackColor = true;
-            this.button_NPCDelete.Click += new System.EventHandler(this.button_NPCDelete_Click);
+            this.list_SchedulingSub_Schedules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.list_SchedulingSub_Schedules.FormattingEnabled = true;
+            this.list_SchedulingSub_Schedules.ItemHeight = 12;
+            this.list_SchedulingSub_Schedules.Location = new System.Drawing.Point(6, 6);
+            this.list_SchedulingSub_Schedules.Name = "list_SchedulingSub_Schedules";
+            this.list_SchedulingSub_Schedules.Size = new System.Drawing.Size(213, 292);
+            this.list_SchedulingSub_Schedules.TabIndex = 1;
+            // 
+            // label_SchedulingSub_ActionsName
+            // 
+            this.label_SchedulingSub_ActionsName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_SchedulingSub_ActionsName.AutoSize = true;
+            this.label_SchedulingSub_ActionsName.Location = new System.Drawing.Point(223, 83);
+            this.label_SchedulingSub_ActionsName.Name = "label_SchedulingSub_ActionsName";
+            this.label_SchedulingSub_ActionsName.Size = new System.Drawing.Size(34, 12);
+            this.label_SchedulingSub_ActionsName.TabIndex = 1;
+            this.label_SchedulingSub_ActionsName.Text = "Name";
+            // 
+            // textBox_SchedulingSub_ActionName
+            // 
+            this.textBox_SchedulingSub_ActionName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_SchedulingSub_ActionName.Enabled = false;
+            this.textBox_SchedulingSub_ActionName.Location = new System.Drawing.Point(225, 99);
+            this.textBox_SchedulingSub_ActionName.Name = "textBox_SchedulingSub_ActionName";
+            this.textBox_SchedulingSub_ActionName.Size = new System.Drawing.Size(176, 19);
+            this.textBox_SchedulingSub_ActionName.TabIndex = 2;
+            // 
+            // label_SchedulingSub_ActionTarget
+            // 
+            this.label_SchedulingSub_ActionTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_SchedulingSub_ActionTarget.AutoSize = true;
+            this.label_SchedulingSub_ActionTarget.Location = new System.Drawing.Point(223, 134);
+            this.label_SchedulingSub_ActionTarget.Name = "label_SchedulingSub_ActionTarget";
+            this.label_SchedulingSub_ActionTarget.Size = new System.Drawing.Size(38, 12);
+            this.label_SchedulingSub_ActionTarget.TabIndex = 3;
+            this.label_SchedulingSub_ActionTarget.Text = "Target";
+            // 
+            // textBox_SchedulingSub_ActionTarget
+            // 
+            this.textBox_SchedulingSub_ActionTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_SchedulingSub_ActionTarget.Enabled = false;
+            this.textBox_SchedulingSub_ActionTarget.Location = new System.Drawing.Point(225, 149);
+            this.textBox_SchedulingSub_ActionTarget.Name = "textBox_SchedulingSub_ActionTarget";
+            this.textBox_SchedulingSub_ActionTarget.Size = new System.Drawing.Size(176, 19);
+            this.textBox_SchedulingSub_ActionTarget.TabIndex = 4;
+            // 
+            // label_SchedulingSub_ActionMinDur
+            // 
+            this.label_SchedulingSub_ActionMinDur.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_SchedulingSub_ActionMinDur.AutoSize = true;
+            this.label_SchedulingSub_ActionMinDur.Location = new System.Drawing.Point(223, 185);
+            this.label_SchedulingSub_ActionMinDur.Name = "label_SchedulingSub_ActionMinDur";
+            this.label_SchedulingSub_ActionMinDur.Size = new System.Drawing.Size(97, 12);
+            this.label_SchedulingSub_ActionMinDur.TabIndex = 5;
+            this.label_SchedulingSub_ActionMinDur.Text = "Minimum Duration";
+            // 
+            // textBox_SchedulingSub_ActionMinDur
+            // 
+            this.textBox_SchedulingSub_ActionMinDur.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_SchedulingSub_ActionMinDur.Enabled = false;
+            this.textBox_SchedulingSub_ActionMinDur.Location = new System.Drawing.Point(225, 200);
+            this.textBox_SchedulingSub_ActionMinDur.Name = "textBox_SchedulingSub_ActionMinDur";
+            this.textBox_SchedulingSub_ActionMinDur.Size = new System.Drawing.Size(119, 19);
+            this.textBox_SchedulingSub_ActionMinDur.TabIndex = 6;
+            this.textBox_SchedulingSub_ActionMinDur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_SchedulingSub_ActionMinDur_KeyPress);
+            // 
+            // label_SchedulingSub_ActionMaxDur
+            // 
+            this.label_SchedulingSub_ActionMaxDur.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_SchedulingSub_ActionMaxDur.AutoSize = true;
+            this.label_SchedulingSub_ActionMaxDur.Location = new System.Drawing.Point(401, 185);
+            this.label_SchedulingSub_ActionMaxDur.Name = "label_SchedulingSub_ActionMaxDur";
+            this.label_SchedulingSub_ActionMaxDur.Size = new System.Drawing.Size(100, 12);
+            this.label_SchedulingSub_ActionMaxDur.TabIndex = 7;
+            this.label_SchedulingSub_ActionMaxDur.Text = "Maximum Duration";
+            // 
+            // textBox_SchedulingSub_ActionMaxDur
+            // 
+            this.textBox_SchedulingSub_ActionMaxDur.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_SchedulingSub_ActionMaxDur.Enabled = false;
+            this.textBox_SchedulingSub_ActionMaxDur.Location = new System.Drawing.Point(403, 200);
+            this.textBox_SchedulingSub_ActionMaxDur.Name = "textBox_SchedulingSub_ActionMaxDur";
+            this.textBox_SchedulingSub_ActionMaxDur.Size = new System.Drawing.Size(119, 19);
+            this.textBox_SchedulingSub_ActionMaxDur.TabIndex = 8;
+            this.textBox_SchedulingSub_ActionMaxDur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_SchedulingSub_ActionMaxDur_KeyPress);
+            // 
+            // button_SchedulingSub_ActionAdd
+            // 
+            this.button_SchedulingSub_ActionAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_SchedulingSub_ActionAdd.Enabled = false;
+            this.button_SchedulingSub_ActionAdd.Location = new System.Drawing.Point(225, 6);
+            this.button_SchedulingSub_ActionAdd.Name = "button_SchedulingSub_ActionAdd";
+            this.button_SchedulingSub_ActionAdd.Size = new System.Drawing.Size(119, 23);
+            this.button_SchedulingSub_ActionAdd.TabIndex = 33;
+            this.button_SchedulingSub_ActionAdd.Text = "New Action";
+            this.button_SchedulingSub_ActionAdd.UseVisualStyleBackColor = true;
+            // 
+            // button_SchedulingSub_ActionDelete
+            // 
+            this.button_SchedulingSub_ActionDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_SchedulingSub_ActionDelete.Enabled = false;
+            this.button_SchedulingSub_ActionDelete.Location = new System.Drawing.Point(225, 35);
+            this.button_SchedulingSub_ActionDelete.Name = "button_SchedulingSub_ActionDelete";
+            this.button_SchedulingSub_ActionDelete.Size = new System.Drawing.Size(119, 23);
+            this.button_SchedulingSub_ActionDelete.TabIndex = 34;
+            this.button_SchedulingSub_ActionDelete.Text = "Delete Action";
+            this.button_SchedulingSub_ActionDelete.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(225, 6);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(34, 12);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Name";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(474, 6);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(30, 12);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Type";
+            // 
+            // textBox_SchedulingSub_TemplateName
+            // 
+            this.textBox_SchedulingSub_TemplateName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_SchedulingSub_TemplateName.Enabled = false;
+            this.textBox_SchedulingSub_TemplateName.Location = new System.Drawing.Point(225, 21);
+            this.textBox_SchedulingSub_TemplateName.Name = "textBox_SchedulingSub_TemplateName";
+            this.textBox_SchedulingSub_TemplateName.Size = new System.Drawing.Size(207, 19);
+            this.textBox_SchedulingSub_TemplateName.TabIndex = 4;
+            // 
+            // textBox_SchedulingSub_TemplateType
+            // 
+            this.textBox_SchedulingSub_TemplateType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_SchedulingSub_TemplateType.Enabled = false;
+            this.textBox_SchedulingSub_TemplateType.Location = new System.Drawing.Point(476, 21);
+            this.textBox_SchedulingSub_TemplateType.Name = "textBox_SchedulingSub_TemplateType";
+            this.textBox_SchedulingSub_TemplateType.Size = new System.Drawing.Size(207, 19);
+            this.textBox_SchedulingSub_TemplateType.TabIndex = 5;
+            // 
+            // dataGridView_SchedulingSub_TemplateActions
+            // 
+            this.dataGridView_SchedulingSub_TemplateActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView_SchedulingSub_TemplateActions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_SchedulingSub_TemplateActions.Enabled = false;
+            this.dataGridView_SchedulingSub_TemplateActions.Location = new System.Drawing.Point(225, 58);
+            this.dataGridView_SchedulingSub_TemplateActions.Name = "dataGridView_SchedulingSub_TemplateActions";
+            this.dataGridView_SchedulingSub_TemplateActions.RowTemplate.Height = 21;
+            this.dataGridView_SchedulingSub_TemplateActions.Size = new System.Drawing.Size(482, 240);
+            this.dataGridView_SchedulingSub_TemplateActions.TabIndex = 6;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(225, 43);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 12);
+            this.label20.TabIndex = 7;
+            this.label20.Text = "Actions";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 422);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabCon_Main);
             this.Controls.Add(this.button_Load);
             this.Controls.Add(this.button_Save);
             this.Name = "Form1";
             this.Text = "Background AI Behaviour editor";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabCon_Main.ResumeLayout(false);
+            this.tab_Npcs.ResumeLayout(false);
+            this.tab_Npcs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ownershipGrid)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tab_GameObjects.ResumeLayout(false);
+            this.tab_Scheduling.ResumeLayout(false);
+            this.tabCon_Scheduling.ResumeLayout(false);
+            this.tab_SchedulingSub_Actions.ResumeLayout(false);
+            this.tab_SchedulingSub_Actions.PerformLayout();
+            this.tab_SchedulingSub_Templates.ResumeLayout(false);
+            this.tab_SchedulingSub_Templates.PerformLayout();
+            this.tab_SchedulingSub_Schedules.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SchedulingSub_TemplateActions)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -572,9 +889,9 @@
         #endregion
         private System.Windows.Forms.Button button_Save;
         private System.Windows.Forms.Button button_Load;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabCon_Main;
+        private System.Windows.Forms.TabPage tab_Npcs;
+        private System.Windows.Forms.TabPage tab_GameObjects;
         private System.Windows.Forms.ListBox list_npc;
         private System.Windows.Forms.ListBox list_gameObj;
         private System.Windows.Forms.TextBox box_name;
@@ -610,6 +927,30 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button_NPCDelete;
         private System.Windows.Forms.Button button_NPCNew;
+        private System.Windows.Forms.TabPage tab_Scheduling;
+        private System.Windows.Forms.TabControl tabCon_Scheduling;
+        private System.Windows.Forms.TabPage tab_SchedulingSub_Actions;
+        private System.Windows.Forms.TabPage tab_SchedulingSub_Templates;
+        private System.Windows.Forms.TabPage tab_SchedulingSub_Schedules;
+        private System.Windows.Forms.ListBox list_SchedulingSub_Actions;
+        private System.Windows.Forms.Button button_SchedulingSub_ActionDelete;
+        private System.Windows.Forms.Button button_SchedulingSub_ActionAdd;
+        private System.Windows.Forms.TextBox textBox_SchedulingSub_ActionMaxDur;
+        private System.Windows.Forms.Label label_SchedulingSub_ActionMaxDur;
+        private System.Windows.Forms.TextBox textBox_SchedulingSub_ActionMinDur;
+        private System.Windows.Forms.Label label_SchedulingSub_ActionMinDur;
+        private System.Windows.Forms.TextBox textBox_SchedulingSub_ActionTarget;
+        private System.Windows.Forms.Label label_SchedulingSub_ActionTarget;
+        private System.Windows.Forms.TextBox textBox_SchedulingSub_ActionName;
+        private System.Windows.Forms.Label label_SchedulingSub_ActionsName;
+        private System.Windows.Forms.ListBox list_SchedulingSub_Templates;
+        private System.Windows.Forms.ListBox list_SchedulingSub_Schedules;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridView dataGridView_SchedulingSub_TemplateActions;
+        private System.Windows.Forms.TextBox textBox_SchedulingSub_TemplateType;
+        private System.Windows.Forms.TextBox textBox_SchedulingSub_TemplateName;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
 
