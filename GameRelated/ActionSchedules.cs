@@ -28,7 +28,7 @@ namespace Behaviour_Editor
         public decimal m_weight;
     }
 
-    [XmlType("ScheduleEntryTemplate")]
+    [XmlType("Entry")]
     public class ActionEntry
     {
         [XmlAttribute("name")]
@@ -40,7 +40,7 @@ namespace Behaviour_Editor
         [XmlAttribute("startTime")]
         public decimal m_startTime;
         [XmlElement("Action")]
-        public ScheduledAction scheAction;
+        public List<ScheduledAction> m_scheAction;
     }
 
     [XmlType("Schedule")]
@@ -55,11 +55,15 @@ namespace Behaviour_Editor
     [Serializable, XmlRoot("Scheduling")]
     public class Scheduling
     {
-        [XmlElement("Actions")]
-        List<Action> m_actions { get; set; }
-        [XmlElement("ScheduleEntryTemplates")]
-        List<ActionEntry> m_entryTemplates;
-        [XmlElement("Schedules")]
-        List<Schedule> m_schedules;
+        //[XmlElement("Actions")]
+        //List<Action> m_actions { get; set; }
+        //[XmlElement("ScheduleEntryTemplates")]
+        //List<ActionEntry> m_entryTemplates;
+        //[XmlElement("Schedules")]
+        //List<Schedule> m_schedules;
+
+        List<Action> Actions { get; set; }
+        List<ActionEntry> ScheduleEntryTemplates { get; set; }
+        List<Schedule> Schedules { get; set; }
     }
 }
