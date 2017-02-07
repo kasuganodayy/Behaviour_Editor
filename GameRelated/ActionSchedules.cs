@@ -20,37 +20,37 @@ namespace Behaviour_Editor
         public decimal m_maxDuration;
     }
 
-    public class ScheduledAction
-    {
-        [XmlAttribute("type")]
-        public string m_type;
-        [XmlAttribute("weight")]
-        public decimal m_weight;
-    }
+    //public class ScheduledAction
+    //{
+    //    [XmlAttribute("type")]
+    //    public string m_type;
+    //    [XmlAttribute("weight")]
+    //    public decimal m_weight;
+    //}
 
-    [XmlType("Entry")]
-    public class ActionEntry
-    {
-        [XmlAttribute("name")]
-        public string m_name;
-        [XmlAttribute("type")]
-        public string m_type;
-        [XmlAttribute("template")]
-        public string m_template;
-        [XmlAttribute("startTime")]
-        public decimal m_startTime;
-        [XmlElement("Action")]
-        public List<ScheduledAction> m_scheAction;
-    }
+    //[XmlType("Entry")]
+    //public class ActionEntry
+    //{
+    //    [XmlAttribute("name")]
+    //    public string m_name;
+    //    [XmlAttribute("type")]
+    //    public string m_type;
+    //    [XmlAttribute("template")]
+    //    public string m_template;
+    //    [XmlAttribute("startTime")]
+    //    public decimal m_startTime;
+    //    [XmlElement("Action")]
+    //    public List<ScheduledAction> m_scheAction;
+    //}
 
-    [XmlType("Schedule")]
-    public class Schedule
-    {
-        [XmlAttribute("name")]
-        public string m_name;
-        [XmlElement("Entry")]
-        public List<ActionEntry> m_entryList;
-    }
+    //[XmlType("Schedule")]
+    //public class Schedule
+    //{
+    //    [XmlAttribute("name")]
+    //    public string m_name;
+    //    [XmlElement("Entry")]
+    //    public List<ActionEntry> m_entryList;
+    //}
 
     [Serializable, XmlRoot("Scheduling")]
     public class Scheduling
@@ -63,7 +63,7 @@ namespace Behaviour_Editor
         //List<Schedule> m_schedules;
 
         List<Action> Actions { get; set; }
-        List<ActionEntry> ScheduleEntryTemplates { get; set; }
-        List<Schedule> Schedules { get; set; }
+        //List<ActionEntry> ScheduleEntryTemplates { get; set; }
+        //List<Schedule> Schedules { get; set; }
     }
 }

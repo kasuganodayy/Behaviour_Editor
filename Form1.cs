@@ -10,15 +10,17 @@ using System.Windows.Forms;
 
 namespace Behaviour_Editor
 {
-    public partial class Form1 : Form
+    public partial class Form_EditorMain : Form
     {
         public string filePath = "xml/Objects.xml";
         public Objects objects;
         public Scheduling scheduling;
 
-        public Form1()
+        public Form_EditorMain()
         {
             InitializeComponent();
+            button_NPCAdd.m_menu = menu_NPCAdd;
+
             EnableNpcsEditor(false);
             EnableSchedulingEditor(false);
         }
@@ -29,7 +31,7 @@ namespace Behaviour_Editor
 
         private void EnableNpcsEditor(bool flag)
         {
-            button_NPCNew.Enabled = flag;
+            button_NPCAdd.Enabled = flag;
             button_NPCDelete.Enabled = flag;
             box_name.Enabled = flag;
             box_schedule.Enabled = flag;
@@ -123,21 +125,7 @@ namespace Behaviour_Editor
             box_colourB.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.b.ToString();
             box_colourA.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.a.ToString();
 
-            try
-            {
-                ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ToList();
-            }
-            catch(Exception ex)
-            {
-                if(ex.GetType().ToString() == "System.NullReferenceException")
-                {
-                    ownershipGrid.DataSource = null;
-                }
-                else
-                {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
-                }
-            }
+            ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned?.m_attributes.ToList();   // DataSource set to null if m_objectOwned throws null exception
         }
 
         private void CheckTextBox_Number(TextBox box)
@@ -147,12 +135,62 @@ namespace Behaviour_Editor
                 box.Text = "";
             }
         }
-        private void CheckPressedKey_Number(KeyPressEventArgs e)
+        private void CheckPressedKey_Number(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
+            if((e.KeyChar == '-') && (sender.ToString().Count() - 36 > 0))
+            {
+                e.Handled = true;
+            }
+            else
+            if(e.KeyChar == '.')
+            {
+
+            }
+        }
+
+        private void box_shapeX_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_shapeY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_facingX_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_facingY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_colourR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_colourG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_colourB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void box_colourA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void textBox_SchedulingSub_ActionMinDur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
+        }
+        private void textBox_SchedulingSub_ActionMaxDur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CheckPressedKey_Number(sender, e);
         }
 
         private void box_name_TextChanged(object sender, EventArgs e)
@@ -162,47 +200,6 @@ namespace Behaviour_Editor
         private void box_schedule_TextChanged(object sender, EventArgs e)
         {
             objects.Npcs[list_npc.SelectedIndex].m_actionSchedule.m_name = box_schedule.Text;
-        }
-
-        private void box_shapeX_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_shapeY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_facingX_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_facingY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_colourR_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_colourG_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_colourB_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void box_colourA_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void textBox_SchedulingSub_ActionMinDur_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
-        }
-        private void textBox_SchedulingSub_ActionMaxDur_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(e);
         }
 
         private void button_OwnershipAdd_Click(object sender, EventArgs e)
@@ -235,17 +232,6 @@ namespace Behaviour_Editor
                 }
             }
         }
-        private void button_NPCNew_Click(object sender, EventArgs e)
-        {
-            objects.Npcs.Add(new Npc() { m_name = "NewNPC",
-                                         m_pos = new Vector2(0, 0),
-                                         m_facing = new Vector2(0, 0),
-                                         m_colour = new Colour(0, 0, 0, 255),
-                                         m_actionSchedule = new ActionSchedule("null")});
-            list_npc.DataSource = null;
-            list_npc.DataSource = objects.Npcs;
-            list_npc.DisplayMember = "m_name";
-        }
         private void button_NPCDelete_Click(object sender, EventArgs e)
         {
             objects.Npcs.Remove(objects.Npcs[list_npc.SelectedIndex]);
@@ -253,6 +239,131 @@ namespace Behaviour_Editor
             list_npc.DataSource = objects.Npcs;
             list_npc.DisplayMember = "m_name";
         }
+        private void newNPCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            objects.Npcs.Add(new Npc()
+            {
+                m_name = "NewNPC",
+                m_pos = new Vector2(0, 0),
+                m_facing = new Vector2(0, 0),
+                m_colour = new Colour(0, 0, 0, 255),
+                m_actionSchedule = new ActionSchedule("null")
+            });
+            list_npc.DataSource = null;
+            list_npc.DataSource = objects.Npcs;
+            list_npc.DisplayMember = "m_name";
+            list_npc.SelectedIndex = objects.Npcs.Count - 1;    // Bring SelectedIndex to new Npc
+        }
+        private void duplicateNPCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            objects.Npcs.Add(new Npc()
+            {
+                m_name = objects.Npcs[list_npc.SelectedIndex].m_name,
+                m_pos = new Vector2(objects.Npcs[list_npc.SelectedIndex].m_pos.x, objects.Npcs[list_npc.SelectedIndex].m_pos.y),
+                m_facing = new Vector2(objects.Npcs[list_npc.SelectedIndex].m_facing.x, objects.Npcs[list_npc.SelectedIndex].m_facing.y),
+                m_colour = new Colour(objects.Npcs[list_npc.SelectedIndex].m_colour.r,
+                                      objects.Npcs[list_npc.SelectedIndex].m_colour.g,
+                                      objects.Npcs[list_npc.SelectedIndex].m_colour.b,
+                                      objects.Npcs[list_npc.SelectedIndex].m_colour.a),
+                m_actionSchedule = new ActionSchedule("null")
+            });
+            objects.Npcs[objects.Npcs.Count - 1] = objects.Npcs[list_npc.SelectedIndex];
+            list_npc.DataSource = null;
+            list_npc.DataSource = objects.Npcs;
+            list_npc.DisplayMember = "m_name";
+            list_npc.SelectedIndex = objects.Npcs.Count - 1;    // Bring SelectedIndex to new Npc
+        }
 
+        private void box_shapeX_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_pos.x = decimal.Parse(box_shapeX.Text);
+        }
+
+        private void box_shapeY_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_pos.y = decimal.Parse(box_shapeY.Text);
+        }
+
+        private void box_facingX_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_facing.x = decimal.Parse(box_facingX.Text);
+        }
+
+        private void box_facingY_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_facing.y = decimal.Parse(box_facingY.Text);
+        }
+
+        private void box_colourR_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_colour.r = int.Parse(box_colourR.Text);
+        }
+
+        private void box_colourG_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_colour.g = int.Parse(box_colourG.Text);
+        }
+
+        private void box_colourB_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_colour.b = int.Parse(box_colourB.Text);
+        }
+
+        private void box_colourA_TextChanged(object sender, EventArgs e)
+        {
+            objects.Npcs[list_npc.SelectedIndex].m_colour.a = int.Parse(box_colourA.Text);
+        }
+    }
+
+    public class MenuButton : Button
+    {
+        [DefaultValue(null)]
+        public ContextMenuStrip m_menu { get; set; }
+
+        [DefaultValue(false)]
+        public bool ShowMenuUnderCursor { get; set; }
+
+        protected override void OnMouseDown(MouseEventArgs mevent)
+        {
+            base.OnMouseDown(mevent);
+
+            if(m_menu != null &&
+                mevent.Button == MouseButtons.Left)
+            {
+                Point menuLocation;
+
+                if (ShowMenuUnderCursor)
+                {
+                    menuLocation = mevent.Location;
+                }
+                else
+                {
+                    menuLocation = new Point(0, Height);
+                }
+
+                m_menu.Show(this, menuLocation);
+
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs pevent)
+        {
+            base.OnPaint(pevent);
+
+            if(m_menu != null)
+            {
+                int arrow_x = ClientRectangle.Width - 14;
+                int arrow_y = ClientRectangle.Height / 2 - 1;
+
+                Brush brush = Enabled ? SystemBrushes.ControlText : SystemBrushes.ButtonShadow;
+                Point[] arrows = new Point[]
+                {
+                    new Point(arrow_x, arrow_y),
+                    new Point(arrow_x + 7, arrow_y),
+                    new Point(arrow_x +3, arrow_y + 4)
+                };
+                pevent.Graphics.FillPolygon(brush, arrows);
+            }
+        }
     }
 }
