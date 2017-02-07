@@ -50,7 +50,7 @@
             this.tableLayoutPanel1.Controls.Add(this.decTxtBox_Y, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label_X, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label_Y, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -99,7 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Vector2TextBox";
-            this.Size = new System.Drawing.Size(252, 30);
+            this.Size = new System.Drawing.Size(247, 25);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -109,9 +109,9 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DecimalTextBox decTxtBox_X;
-        private DecimalTextBox decTxtBox_Y;
         private System.Windows.Forms.Label label_X;
         private System.Windows.Forms.Label label_Y;
+        public DecimalTextBox decTxtBox_X;
+        public DecimalTextBox decTxtBox_Y;
     }
 }

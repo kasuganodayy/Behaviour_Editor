@@ -27,6 +27,26 @@ namespace Behaviour_Editor
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            vecTxtBox_Pos.X_Validated += new EventHandler(pos_X_Validated);
+            vecTxtBox_Pos.Y_Validated += new EventHandler(pos_Y_validated);
+        }
+
+        private void pos_Y_validated(object sender, EventArgs e)
+        {
+            decimal result = 0;
+            if(decimal.TryParse(vecTxtBox_Pos.decTxtBox_Y.Text(), out result))
+            {
+                objects.Npcs[list_npc.SelectedIndex].m_pos.y = result;
+            }
+        }
+
+        private void pos_X_Validated(object sender, EventArgs e)
+        {
+            decimal result = 0;
+            if (decimal.TryParse(vecTxtBox_Pos.decTxtBox_X.Text(), out result))
+            {
+                objects.Npcs[list_npc.SelectedIndex].m_pos.x = result;
+            }
         }
 
         private void EnableNpcsEditor(bool flag)
@@ -35,10 +55,6 @@ namespace Behaviour_Editor
             button_NPCDelete.Enabled = flag;
             box_name.Enabled = flag;
             box_schedule.Enabled = flag;
-            box_shapeX.Enabled = flag;
-            box_shapeY.Enabled = flag;
-            box_facingX.Enabled = flag;
-            box_facingY.Enabled = flag;
             box_colourR.Enabled = flag;
             box_colourG.Enabled = flag;
             box_colourB.Enabled = flag;
@@ -116,10 +132,11 @@ namespace Behaviour_Editor
             }
             box_name.Text = objects.Npcs[list_npc.SelectedIndex].m_name;
             box_schedule.Text = objects.Npcs[list_npc.SelectedIndex].m_actionSchedule.m_name;
-            box_shapeX.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.x.ToString();
-            box_shapeY.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.y.ToString();
-            box_facingX.Text = objects.Npcs[list_npc.SelectedIndex].m_facing.x.ToString();
-            box_facingY.Text = objects.Npcs[list_npc.SelectedIndex].m_facing.y.ToString();
+            //box_shapeX.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.x.ToString();
+            vecTxtBox_Pos.SetVector2(objects.Npcs[list_npc.SelectedIndex].m_pos);
+            //box_shapeY.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.y.ToString();
+            //box_facingX.Text = objects.Npcs[list_npc.SelectedIndex].m_facing.x.ToString();
+            //box_facingY.Text = objects.Npcs[list_npc.SelectedIndex].m_facing.y.ToString();
             box_colourR.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.r.ToString();
             box_colourG.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.g.ToString();
             box_colourB.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.b.ToString();
@@ -152,22 +169,6 @@ namespace Behaviour_Editor
             }
         }
 
-        private void box_shapeX_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(sender, e);
-        }
-        private void box_shapeY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(sender, e);
-        }
-        private void box_facingX_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(sender, e);
-        }
-        private void box_facingY_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckPressedKey_Number(sender, e);
-        }
         private void box_colourR_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckPressedKey_Number(sender, e);
@@ -274,25 +275,25 @@ namespace Behaviour_Editor
             list_npc.SelectedIndex = objects.Npcs.Count - 1;    // Bring SelectedIndex to new Npc
         }
 
-        private void box_shapeX_TextChanged(object sender, EventArgs e)
-        {
-            objects.Npcs[list_npc.SelectedIndex].m_pos.x = decimal.Parse(box_shapeX.Text);
-        }
+        //private void box_shapeX_TextChanged(object sender, EventArgs e)
+        //{
+        //    objects.Npcs[list_npc.SelectedIndex].m_pos.x = decimal.Parse(box_shapeX.Text);
+        //}
 
-        private void box_shapeY_TextChanged(object sender, EventArgs e)
-        {
-            objects.Npcs[list_npc.SelectedIndex].m_pos.y = decimal.Parse(box_shapeY.Text);
-        }
+        //private void box_shapeY_TextChanged(object sender, EventArgs e)
+        //{
+        //    objects.Npcs[list_npc.SelectedIndex].m_pos.y = decimal.Parse(box_shapeY.Text);
+        //}
 
-        private void box_facingX_TextChanged(object sender, EventArgs e)
-        {
-            objects.Npcs[list_npc.SelectedIndex].m_facing.x = decimal.Parse(box_facingX.Text);
-        }
+        //private void box_facingX_TextChanged(object sender, EventArgs e)
+        //{
+        //    objects.Npcs[list_npc.SelectedIndex].m_facing.x = decimal.Parse(box_facingX.Text);
+        //}
 
-        private void box_facingY_TextChanged(object sender, EventArgs e)
-        {
-            objects.Npcs[list_npc.SelectedIndex].m_facing.y = decimal.Parse(box_facingY.Text);
-        }
+        //private void box_facingY_TextChanged(object sender, EventArgs e)
+        //{
+        //    objects.Npcs[list_npc.SelectedIndex].m_facing.y = decimal.Parse(box_facingY.Text);
+        //}
 
         private void box_colourR_TextChanged(object sender, EventArgs e)
         {

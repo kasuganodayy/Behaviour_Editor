@@ -17,6 +17,11 @@ namespace Behaviour_Editor
             InitializeComponent();
         }
 
+        public new string Text()
+        {
+            return textBox1.Text;
+        }
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Reject if not digit or '.' or '-'
