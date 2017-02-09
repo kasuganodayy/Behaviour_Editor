@@ -35,7 +35,7 @@ namespace Behaviour_Editor
 
             try
             {
-                FileStream xmlStream = new FileStream(filePath, FileMode.Open);
+                FileStream xmlStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
                 objects = (Objects)serializer.Deserialize(xmlStream);
                 xmlStream.Close();

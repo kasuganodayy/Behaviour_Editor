@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Behaviour_Editor
 {
@@ -15,6 +16,7 @@ namespace Behaviour_Editor
         public string filePath = "xml/Objects.xml";
         public Objects objects;
         public Scheduling scheduling;
+        private FileSystemWatcher watcher;
 
         public Form_EditorMain()
         {
@@ -23,14 +25,55 @@ namespace Behaviour_Editor
 
             EnableNpcsEditor(false);
             EnableSchedulingEditor(false);
+
+            watcher = new FileSystemWatcher();
+            watcher.Path = Path.GetDirectoryName(filePath);
+            watcher.Filter = Path.GetFileName(filePath);
+            watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+            watcher.Changed += new FileSystemEventHandler(OnXMLChanged);
+        }
+
+        private void OnXMLChanged(object sender, FileSystemEventArgs e)
+        {
+            RefreshNpcs();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             vecTxtBox_Pos.X_Validated += new EventHandler(pos_X_Validated);
             vecTxtBox_Pos.Y_Validated += new EventHandler(pos_Y_validated);
+            vecTxtBox_Facing.X_Validated += new EventHandler(face_X_Validated);
+            vecTxtBox_Facing.Y_Validated += new EventHandler(face_Y_validated);
         }
 
+        private void RefreshNpcs()
+        {
+            objects = XMLHelper.DeserialzeObjects(filePath, objects);
+
+            list_npc.DataSource = null;
+            list_npc.DataSource = objects.Npcs;
+            list_npc.DisplayMember = "m_name";
+            list_gameObj.DataSource = null;
+            list_gameObj.DataSource = objects.GameObjects;
+            list_gameObj.DisplayMember = "m_name";
+        }
+
+        private void face_Y_validated(object sender, EventArgs e)
+        {
+            decimal result = 0;
+            if (decimal.TryParse(vecTxtBox_Facing.decTxtBox_Y.Text(), out result))
+            {
+                objects.Npcs[list_npc.SelectedIndex].m_facing.y = result;
+            }
+        }
+        private void face_X_Validated(object sender, EventArgs e)
+        {
+            decimal result = 0;
+            if(decimal.TryParse(vecTxtBox_Facing.decTxtBox_X.Text(), out result))
+            {
+                objects.Npcs[list_npc.SelectedIndex].m_facing.x = result;
+            }
+        }
         private void pos_Y_validated(object sender, EventArgs e)
         {
             decimal result = 0;
@@ -39,7 +82,6 @@ namespace Behaviour_Editor
                 objects.Npcs[list_npc.SelectedIndex].m_pos.y = result;
             }
         }
-
         private void pos_X_Validated(object sender, EventArgs e)
         {
             decimal result = 0;
@@ -62,6 +104,8 @@ namespace Behaviour_Editor
             box_OwnershipAddKey.Enabled = flag;
             box_OwnershipAddValue.Enabled = flag;
             button_OwnershipAdd.Enabled = flag;
+            vecTxtBox_Facing.Enabled = flag;
+            vecTxtBox_Pos.Enabled = flag;
         }
 
         private void EnableSchedulingEditor(bool flag)
@@ -81,6 +125,7 @@ namespace Behaviour_Editor
         {
             button_Save.Click -= button_Save_Click;
             button_Save.Enabled = false;
+            watcher.EnableRaisingEvents = false;
 
             // Serialize XML
             XMLHelper.SerializeObjects(filePath, objects);
@@ -91,12 +136,12 @@ namespace Behaviour_Editor
             
             button_Save.Click += button_Save_Click;
             button_Save.Enabled = true;
+            watcher.EnableRaisingEvents = true;
         }
 
         private void button_Load_Click(object sender, EventArgs e)
         {
             button_Load.Click -= button_Load_Click;
-            button_Load.Enabled = false;
 
             // Load XML
             objects = XMLHelper.DeserialzeObjects(filePath, objects);
@@ -115,11 +160,8 @@ namespace Behaviour_Editor
                 list_gameObj.DataSource = objects.GameObjects;
                 list_gameObj.DisplayMember = "m_name";
             }
-            else
-            {
-                // Enable Load button on fail
-                button_Load.Enabled = true;
-            }
+
+            watcher.EnableRaisingEvents = true;
 
             button_Load.Click += button_Load_Click;
         }
@@ -132,11 +174,8 @@ namespace Behaviour_Editor
             }
             box_name.Text = objects.Npcs[list_npc.SelectedIndex].m_name;
             box_schedule.Text = objects.Npcs[list_npc.SelectedIndex].m_actionSchedule.m_name;
-            //box_shapeX.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.x.ToString();
             vecTxtBox_Pos.SetVector2(objects.Npcs[list_npc.SelectedIndex].m_pos);
-            //box_shapeY.Text = objects.Npcs[list_npc.SelectedIndex].m_pos.y.ToString();
-            //box_facingX.Text = objects.Npcs[list_npc.SelectedIndex].m_facing.x.ToString();
-            //box_facingY.Text = objects.Npcs[list_npc.SelectedIndex].m_facing.y.ToString();
+            vecTxtBox_Facing.SetVector2(objects.Npcs[list_npc.SelectedIndex].m_facing);
             box_colourR.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.r.ToString();
             box_colourG.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.g.ToString();
             box_colourB.Text = objects.Npcs[list_npc.SelectedIndex].m_colour.b.ToString();
@@ -205,33 +244,8 @@ namespace Behaviour_Editor
 
         private void button_OwnershipAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if(objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ContainsKey(box_OwnershipAddKey.Text) == false &&
-                    objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ContainsValue(box_OwnershipAddValue.Text) == false)
-                {
-                    objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.Add(box_OwnershipAddKey.Text, box_OwnershipAddValue.Text);
-
-                    ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ToList();
-                }
-                else
-                {
-                    MessageBox.Show("Key or Value already exists.", "Ownership duplicate");
-                }
-            }
-            catch(Exception ex)
-            {
-                if(ex.GetType().ToString() == "System.NullReferenceException")
-                {
-                    objects.Npcs[list_npc.SelectedIndex].m_objectOwned = new OwnedObjects(box_OwnershipAddKey.Text, box_OwnershipAddValue.Text);
-
-                    ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes.ToList();
-                }
-                else
-                {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
-                }
-            }
+            objects.Npcs[list_npc.SelectedIndex].AddOwnership(box_OwnershipAddKey.Text, box_OwnershipAddValue.Text);
+            ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned?.m_attributes.ToList();
         }
         private void button_NPCDelete_Click(object sender, EventArgs e)
         {
@@ -239,6 +253,10 @@ namespace Behaviour_Editor
             list_npc.DataSource = null;
             list_npc.DataSource = objects.Npcs;
             list_npc.DisplayMember = "m_name";
+            if(list_npc.SelectedIndex == -1)
+            {
+                list_npc.SelectedIndex = objects.Npcs.Count() - 1;
+            }
         }
         private void newNPCToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -266,34 +284,17 @@ namespace Behaviour_Editor
                                       objects.Npcs[list_npc.SelectedIndex].m_colour.g,
                                       objects.Npcs[list_npc.SelectedIndex].m_colour.b,
                                       objects.Npcs[list_npc.SelectedIndex].m_colour.a),
-                m_actionSchedule = new ActionSchedule("null")
+                m_actionSchedule = new ActionSchedule(objects.Npcs[list_npc.SelectedIndex].m_actionSchedule.m_name)
             });
-            objects.Npcs[objects.Npcs.Count - 1] = objects.Npcs[list_npc.SelectedIndex];
+            foreach (KeyValuePair<string, string> entry in objects.Npcs[list_npc.SelectedIndex].m_objectOwned.m_attributes)
+            {
+                objects.Npcs[objects.Npcs.Count - 1].AddOwnership(entry.Key, entry.Value);
+            }
             list_npc.DataSource = null;
             list_npc.DataSource = objects.Npcs;
             list_npc.DisplayMember = "m_name";
             list_npc.SelectedIndex = objects.Npcs.Count - 1;    // Bring SelectedIndex to new Npc
         }
-
-        //private void box_shapeX_TextChanged(object sender, EventArgs e)
-        //{
-        //    objects.Npcs[list_npc.SelectedIndex].m_pos.x = decimal.Parse(box_shapeX.Text);
-        //}
-
-        //private void box_shapeY_TextChanged(object sender, EventArgs e)
-        //{
-        //    objects.Npcs[list_npc.SelectedIndex].m_pos.y = decimal.Parse(box_shapeY.Text);
-        //}
-
-        //private void box_facingX_TextChanged(object sender, EventArgs e)
-        //{
-        //    objects.Npcs[list_npc.SelectedIndex].m_facing.x = decimal.Parse(box_facingX.Text);
-        //}
-
-        //private void box_facingY_TextChanged(object sender, EventArgs e)
-        //{
-        //    objects.Npcs[list_npc.SelectedIndex].m_facing.y = decimal.Parse(box_facingY.Text);
-        //}
 
         private void box_colourR_TextChanged(object sender, EventArgs e)
         {

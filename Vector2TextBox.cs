@@ -33,8 +33,6 @@ namespace Behaviour_Editor
 
         private void DecTxtBox_X_Validated(object sender, EventArgs e)
         {
-            //
-
             if (X_Validated != null)
             {
                 X_Validated(sender, e);

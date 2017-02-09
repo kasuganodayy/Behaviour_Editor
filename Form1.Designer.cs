@@ -34,11 +34,8 @@
             this.tabCon_Main = new System.Windows.Forms.TabControl();
             this.tab_Npcs = new System.Windows.Forms.TabPage();
             this.button_NPCDelete = new System.Windows.Forms.Button();
-            this.button_NPCAdd = new Behaviour_Editor.MenuButton();
             this.list_npc = new System.Windows.Forms.ListBox();
             this.groupBox_Npc = new System.Windows.Forms.GroupBox();
-            this.vector2TextBox2 = new Behaviour_Editor.Vector2TextBox();
-            this.vecTxtBox_Pos = new Behaviour_Editor.Vector2TextBox();
             this.box_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -91,6 +88,9 @@
             this.menu_NPCAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button_NPCAdd = new Behaviour_Editor.MenuButton();
+            this.vecTxtBox_Facing = new Behaviour_Editor.Vector2TextBox();
+            this.vecTxtBox_Pos = new Behaviour_Editor.Vector2TextBox();
             this.tabCon_Main.SuspendLayout();
             this.tab_Npcs.SuspendLayout();
             this.groupBox_Npc.SuspendLayout();
@@ -169,17 +169,6 @@
             this.button_NPCDelete.UseVisualStyleBackColor = true;
             this.button_NPCDelete.Click += new System.EventHandler(this.button_NPCDelete_Click);
             // 
-            // button_NPCAdd
-            // 
-            this.button_NPCAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_NPCAdd.Enabled = false;
-            this.button_NPCAdd.Location = new System.Drawing.Point(7, 442);
-            this.button_NPCAdd.Name = "button_NPCAdd";
-            this.button_NPCAdd.Size = new System.Drawing.Size(97, 23);
-            this.button_NPCAdd.TabIndex = 32;
-            this.button_NPCAdd.Text = "Add NPC";
-            this.button_NPCAdd.UseVisualStyleBackColor = true;
-            // 
             // list_npc
             // 
             this.list_npc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -197,7 +186,7 @@
             // 
             this.groupBox_Npc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_Npc.Controls.Add(this.vector2TextBox2);
+            this.groupBox_Npc.Controls.Add(this.vecTxtBox_Facing);
             this.groupBox_Npc.Controls.Add(this.vecTxtBox_Pos);
             this.groupBox_Npc.Controls.Add(this.box_name);
             this.groupBox_Npc.Controls.Add(this.label1);
@@ -221,20 +210,6 @@
             this.groupBox_Npc.TabIndex = 34;
             this.groupBox_Npc.TabStop = false;
             this.groupBox_Npc.Text = "Npc";
-            // 
-            // vector2TextBox2
-            // 
-            this.vector2TextBox2.Location = new System.Drawing.Point(256, 84);
-            this.vector2TextBox2.Name = "vector2TextBox2";
-            this.vector2TextBox2.Size = new System.Drawing.Size(202, 27);
-            this.vector2TextBox2.TabIndex = 34;
-            // 
-            // vecTxtBox_Pos
-            // 
-            this.vecTxtBox_Pos.Location = new System.Drawing.Point(256, 38);
-            this.vecTxtBox_Pos.Name = "vecTxtBox_Pos";
-            this.vecTxtBox_Pos.Size = new System.Drawing.Size(202, 27);
-            this.vecTxtBox_Pos.TabIndex = 33;
             // 
             // box_name
             // 
@@ -817,6 +792,33 @@
             this.duplicateNPCToolStripMenuItem.Text = "Duplicate NPC";
             this.duplicateNPCToolStripMenuItem.Click += new System.EventHandler(this.duplicateNPCToolStripMenuItem_Click);
             // 
+            // button_NPCAdd
+            // 
+            this.button_NPCAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_NPCAdd.Enabled = false;
+            this.button_NPCAdd.Location = new System.Drawing.Point(7, 442);
+            this.button_NPCAdd.Name = "button_NPCAdd";
+            this.button_NPCAdd.Size = new System.Drawing.Size(97, 23);
+            this.button_NPCAdd.TabIndex = 32;
+            this.button_NPCAdd.Text = "Add NPC";
+            this.button_NPCAdd.UseVisualStyleBackColor = true;
+            // 
+            // vecTxtBox_Facing
+            // 
+            this.vecTxtBox_Facing.Enabled = false;
+            this.vecTxtBox_Facing.Location = new System.Drawing.Point(256, 84);
+            this.vecTxtBox_Facing.Name = "vecTxtBox_Facing";
+            this.vecTxtBox_Facing.Size = new System.Drawing.Size(202, 27);
+            this.vecTxtBox_Facing.TabIndex = 34;
+            // 
+            // vecTxtBox_Pos
+            // 
+            this.vecTxtBox_Pos.Enabled = false;
+            this.vecTxtBox_Pos.Location = new System.Drawing.Point(256, 38);
+            this.vecTxtBox_Pos.Name = "vecTxtBox_Pos";
+            this.vecTxtBox_Pos.Size = new System.Drawing.Size(202, 27);
+            this.vecTxtBox_Pos.TabIndex = 33;
+            // 
             // Form_EditorMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -911,7 +913,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox box_OwnershipAddKey;
-        private Vector2TextBox vector2TextBox2;
+        private Vector2TextBox vecTxtBox_Facing;
         private Vector2TextBox vecTxtBox_Pos;
     }
 }
