@@ -63,7 +63,20 @@
             this.label17 = new System.Windows.Forms.Label();
             this.box_OwnershipAddKey = new System.Windows.Forms.TextBox();
             this.tab_GameObjects = new System.Windows.Forms.TabPage();
+            this.button_DeleteObject = new System.Windows.Forms.Button();
+            this.button_AddObject = new Behaviour_Editor.MenuButton();
             this.groupBox_GameObject = new System.Windows.Forms.GroupBox();
+            this.vecTxtBox_GameObj_Pos = new Behaviour_Editor.Vector2TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_GameObj_A = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_GameObj_B = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_GameObj_G = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_GameObj_R = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label_GameObj_Type = new System.Windows.Forms.Label();
             this.textBox_GameObj_Type = new System.Windows.Forms.TextBox();
             this.textBox_GameObj_Name = new System.Windows.Forms.TextBox();
@@ -96,8 +109,6 @@
             this.menu_NPCAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.menuButton1 = new Behaviour_Editor.MenuButton();
             this.tabCon_Main.SuspendLayout();
             this.tab_Npcs.SuspendLayout();
             this.groupBox_Npc.SuspendLayout();
@@ -506,8 +517,8 @@
             // 
             // tab_GameObjects
             // 
-            this.tab_GameObjects.Controls.Add(this.button1);
-            this.tab_GameObjects.Controls.Add(this.menuButton1);
+            this.tab_GameObjects.Controls.Add(this.button_DeleteObject);
+            this.tab_GameObjects.Controls.Add(this.button_AddObject);
             this.tab_GameObjects.Controls.Add(this.groupBox_GameObject);
             this.tab_GameObjects.Controls.Add(this.list_gameObj);
             this.tab_GameObjects.Location = new System.Drawing.Point(4, 22);
@@ -518,8 +529,39 @@
             this.tab_GameObjects.Text = "GameObjects";
             this.tab_GameObjects.UseVisualStyleBackColor = true;
             // 
+            // button_DeleteObject
+            // 
+            this.button_DeleteObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_DeleteObject.Location = new System.Drawing.Point(160, 449);
+            this.button_DeleteObject.Name = "button_DeleteObject";
+            this.button_DeleteObject.Size = new System.Drawing.Size(97, 23);
+            this.button_DeleteObject.TabIndex = 35;
+            this.button_DeleteObject.Text = "Delete Object";
+            this.button_DeleteObject.UseVisualStyleBackColor = true;
+            // 
+            // button_AddObject
+            // 
+            this.button_AddObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_AddObject.Location = new System.Drawing.Point(7, 449);
+            this.button_AddObject.Name = "button_AddObject";
+            this.button_AddObject.Size = new System.Drawing.Size(97, 23);
+            this.button_AddObject.TabIndex = 34;
+            this.button_AddObject.Text = "Add Object";
+            this.button_AddObject.UseVisualStyleBackColor = true;
+            // 
             // groupBox_GameObject
             // 
+            this.groupBox_GameObject.Controls.Add(this.vecTxtBox_GameObj_Pos);
+            this.groupBox_GameObject.Controls.Add(this.label3);
+            this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_A);
+            this.groupBox_GameObject.Controls.Add(this.label4);
+            this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_B);
+            this.groupBox_GameObject.Controls.Add(this.label6);
+            this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_G);
+            this.groupBox_GameObject.Controls.Add(this.label7);
+            this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_R);
+            this.groupBox_GameObject.Controls.Add(this.label14);
+            this.groupBox_GameObject.Controls.Add(this.label21);
             this.groupBox_GameObject.Controls.Add(this.label_GameObj_Type);
             this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_Type);
             this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_Name);
@@ -530,6 +572,115 @@
             this.groupBox_GameObject.TabIndex = 1;
             this.groupBox_GameObject.TabStop = false;
             this.groupBox_GameObject.Text = "Game Object";
+            // 
+            // vecTxtBox_GameObj_Pos
+            // 
+            this.vecTxtBox_GameObj_Pos.Location = new System.Drawing.Point(24, 147);
+            this.vecTxtBox_GameObj_Pos.Name = "vecTxtBox_GameObj_Pos";
+            this.vecTxtBox_GameObj_Pos.Size = new System.Drawing.Size(202, 27);
+            this.vecTxtBox_GameObj_Pos.TabIndex = 44;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 12);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Shape (Position)";
+            // 
+            // textBox_GameObj_A
+            // 
+            this.textBox_GameObj_A.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_GameObj_A.Location = new System.Drawing.Point(201, 201);
+            this.textBox_GameObj_A.Name = "textBox_GameObj_A";
+            this.textBox_GameObj_A.Size = new System.Drawing.Size(31, 19);
+            this.textBox_GameObj_A.TabIndex = 43;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 186);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 12);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Color";
+            // 
+            // textBox_GameObj_B
+            // 
+            this.textBox_GameObj_B.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_GameObj_B.Location = new System.Drawing.Point(147, 201);
+            this.textBox_GameObj_B.Name = "textBox_GameObj_B";
+            this.textBox_GameObj_B.Size = new System.Drawing.Size(31, 19);
+            this.textBox_GameObj_B.TabIndex = 42;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 204);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(9, 12);
+            this.label6.TabIndex = 36;
+            this.label6.Text = "r";
+            // 
+            // textBox_GameObj_G
+            // 
+            this.textBox_GameObj_G.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_GameObj_G.Location = new System.Drawing.Point(93, 201);
+            this.textBox_GameObj_G.Name = "textBox_GameObj_G";
+            this.textBox_GameObj_G.Size = new System.Drawing.Size(31, 19);
+            this.textBox_GameObj_G.TabIndex = 41;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(76, 204);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 12);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "g";
+            // 
+            // textBox_GameObj_R
+            // 
+            this.textBox_GameObj_R.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_GameObj_R.Location = new System.Drawing.Point(39, 201);
+            this.textBox_GameObj_R.Name = "textBox_GameObj_R";
+            this.textBox_GameObj_R.Size = new System.Drawing.Size(31, 19);
+            this.textBox_GameObj_R.TabIndex = 40;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(130, 204);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 12);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "b";
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(184, 204);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(11, 12);
+            this.label21.TabIndex = 39;
+            this.label21.Text = "a";
             // 
             // label_GameObj_Type
             // 
@@ -578,6 +729,7 @@
             this.list_gameObj.Name = "list_gameObj";
             this.list_gameObj.Size = new System.Drawing.Size(250, 436);
             this.list_gameObj.TabIndex = 0;
+            this.list_gameObj.SelectedIndexChanged += new System.EventHandler(this.list_gameObj_SelectedIndexChanged);
             // 
             // tab_Scheduling
             // 
@@ -879,28 +1031,6 @@
             this.duplicateNPCToolStripMenuItem.Text = "Duplicate NPC";
             this.duplicateNPCToolStripMenuItem.Click += new System.EventHandler(this.duplicateNPCToolStripMenuItem_Click);
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(160, 449);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 23);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Delete Object";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // menuButton1
-            // 
-            this.menuButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.menuButton1.Enabled = false;
-            this.menuButton1.Location = new System.Drawing.Point(7, 449);
-            this.menuButton1.Name = "menuButton1";
-            this.menuButton1.Size = new System.Drawing.Size(97, 23);
-            this.menuButton1.TabIndex = 34;
-            this.menuButton1.Text = "Add Object";
-            this.menuButton1.UseVisualStyleBackColor = true;
-            // 
             // Form_EditorMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1004,8 +1134,19 @@
         private System.Windows.Forms.TextBox textBox_GameObj_Type;
         private System.Windows.Forms.TextBox textBox_GameObj_Name;
         private System.Windows.Forms.Label label_GameObj_Name;
-        private System.Windows.Forms.Button button1;
-        private MenuButton menuButton1;
+        private System.Windows.Forms.Button button_DeleteObject;
+        private MenuButton button_AddObject;
+        private Vector2TextBox vecTxtBox_GameObj_Pos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_GameObj_A;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_GameObj_B;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_GameObj_G;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_GameObj_R;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label21;
     }
 }
 

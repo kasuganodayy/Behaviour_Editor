@@ -68,5 +68,11 @@ namespace Behaviour_Editor
             decTxtBox_X.textBox1.Text = _vec2.x.ToString();
             decTxtBox_Y.textBox1.Text = _vec2.y.ToString();
         }
+
+        public void SetVector2(decimal _x, decimal _y)
+        {
+            decTxtBox_X.textBox1.Text = _x.ToString();
+            decTxtBox_Y.textBox1.Text = _y.ToString();
+        }
     }
 }

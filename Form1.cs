@@ -183,6 +183,20 @@ namespace Behaviour_Editor
 
             ownershipGrid.DataSource = objects.Npcs[list_npc.SelectedIndex].m_objectOwned?.m_attributes.ToList();   // DataSource set to null if m_objectOwned throws null exception
         }
+        private void list_gameObj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(list_gameObj.SelectedIndex < 0)
+            {
+                return;
+            }
+            textBox_GameObj_Name.Text = objects.GameObjects[list_gameObj.SelectedIndex].m_name;
+            textBox_GameObj_Type.Text = objects.GameObjects[list_gameObj.SelectedIndex].m_type;
+            vecTxtBox_GameObj_Pos.SetVector2(objects.GameObjects[list_gameObj.SelectedIndex].m_rect.x, objects.GameObjects[list_gameObj.SelectedIndex].m_rect.y);
+            textBox_GameObj_R.Text = objects.GameObjects[list_gameObj.SelectedIndex].m_colour.r.ToString();
+            textBox_GameObj_G.Text = objects.GameObjects[list_gameObj.SelectedIndex].m_colour.g.ToString();
+            textBox_GameObj_B.Text = objects.GameObjects[list_gameObj.SelectedIndex].m_colour.b.ToString();
+            textBox_GameObj_A.Text = objects.GameObjects[list_gameObj.SelectedIndex].m_colour.a.ToString();
+        }
 
         private void CheckTextBox_Number(TextBox box)
         {
