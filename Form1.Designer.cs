@@ -34,8 +34,11 @@
             this.tabCon_Main = new System.Windows.Forms.TabControl();
             this.tab_Npcs = new System.Windows.Forms.TabPage();
             this.button_NPCDelete = new System.Windows.Forms.Button();
+            this.button_NPCAdd = new Behaviour_Editor.MenuButton();
             this.list_npc = new System.Windows.Forms.ListBox();
             this.groupBox_Npc = new System.Windows.Forms.GroupBox();
+            this.vecTxtBox_Facing = new Behaviour_Editor.Vector2TextBox();
+            this.vecTxtBox_Pos = new Behaviour_Editor.Vector2TextBox();
             this.box_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,6 +63,11 @@
             this.label17 = new System.Windows.Forms.Label();
             this.box_OwnershipAddKey = new System.Windows.Forms.TextBox();
             this.tab_GameObjects = new System.Windows.Forms.TabPage();
+            this.groupBox_GameObject = new System.Windows.Forms.GroupBox();
+            this.label_GameObj_Type = new System.Windows.Forms.Label();
+            this.textBox_GameObj_Type = new System.Windows.Forms.TextBox();
+            this.textBox_GameObj_Name = new System.Windows.Forms.TextBox();
+            this.label_GameObj_Name = new System.Windows.Forms.Label();
             this.list_gameObj = new System.Windows.Forms.ListBox();
             this.tab_Scheduling = new System.Windows.Forms.TabPage();
             this.tabCon_Scheduling = new System.Windows.Forms.TabControl();
@@ -88,15 +96,15 @@
             this.menu_NPCAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button_NPCAdd = new Behaviour_Editor.MenuButton();
-            this.vecTxtBox_Facing = new Behaviour_Editor.Vector2TextBox();
-            this.vecTxtBox_Pos = new Behaviour_Editor.Vector2TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.menuButton1 = new Behaviour_Editor.MenuButton();
             this.tabCon_Main.SuspendLayout();
             this.tab_Npcs.SuspendLayout();
             this.groupBox_Npc.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ownershipGrid)).BeginInit();
             this.tab_GameObjects.SuspendLayout();
+            this.groupBox_GameObject.SuspendLayout();
             this.tab_Scheduling.SuspendLayout();
             this.tabCon_Scheduling.SuspendLayout();
             this.tab_SchedulingSub_Actions.SuspendLayout();
@@ -169,6 +177,17 @@
             this.button_NPCDelete.UseVisualStyleBackColor = true;
             this.button_NPCDelete.Click += new System.EventHandler(this.button_NPCDelete_Click);
             // 
+            // button_NPCAdd
+            // 
+            this.button_NPCAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_NPCAdd.Enabled = false;
+            this.button_NPCAdd.Location = new System.Drawing.Point(7, 442);
+            this.button_NPCAdd.Name = "button_NPCAdd";
+            this.button_NPCAdd.Size = new System.Drawing.Size(97, 23);
+            this.button_NPCAdd.TabIndex = 32;
+            this.button_NPCAdd.Text = "Add NPC";
+            this.button_NPCAdd.UseVisualStyleBackColor = true;
+            // 
             // list_npc
             // 
             this.list_npc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -210,6 +229,22 @@
             this.groupBox_Npc.TabIndex = 34;
             this.groupBox_Npc.TabStop = false;
             this.groupBox_Npc.Text = "Npc";
+            // 
+            // vecTxtBox_Facing
+            // 
+            this.vecTxtBox_Facing.Enabled = false;
+            this.vecTxtBox_Facing.Location = new System.Drawing.Point(256, 84);
+            this.vecTxtBox_Facing.Name = "vecTxtBox_Facing";
+            this.vecTxtBox_Facing.Size = new System.Drawing.Size(202, 27);
+            this.vecTxtBox_Facing.TabIndex = 34;
+            // 
+            // vecTxtBox_Pos
+            // 
+            this.vecTxtBox_Pos.Enabled = false;
+            this.vecTxtBox_Pos.Location = new System.Drawing.Point(256, 38);
+            this.vecTxtBox_Pos.Name = "vecTxtBox_Pos";
+            this.vecTxtBox_Pos.Size = new System.Drawing.Size(202, 27);
+            this.vecTxtBox_Pos.TabIndex = 33;
             // 
             // box_name
             // 
@@ -471,6 +506,9 @@
             // 
             // tab_GameObjects
             // 
+            this.tab_GameObjects.Controls.Add(this.button1);
+            this.tab_GameObjects.Controls.Add(this.menuButton1);
+            this.tab_GameObjects.Controls.Add(this.groupBox_GameObject);
             this.tab_GameObjects.Controls.Add(this.list_gameObj);
             this.tab_GameObjects.Location = new System.Drawing.Point(4, 22);
             this.tab_GameObjects.Name = "tab_GameObjects";
@@ -479,6 +517,55 @@
             this.tab_GameObjects.TabIndex = 1;
             this.tab_GameObjects.Text = "GameObjects";
             this.tab_GameObjects.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_GameObject
+            // 
+            this.groupBox_GameObject.Controls.Add(this.label_GameObj_Type);
+            this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_Type);
+            this.groupBox_GameObject.Controls.Add(this.textBox_GameObj_Name);
+            this.groupBox_GameObject.Controls.Add(this.label_GameObj_Name);
+            this.groupBox_GameObject.Location = new System.Drawing.Point(264, 7);
+            this.groupBox_GameObject.Name = "groupBox_GameObject";
+            this.groupBox_GameObject.Size = new System.Drawing.Size(482, 436);
+            this.groupBox_GameObject.TabIndex = 1;
+            this.groupBox_GameObject.TabStop = false;
+            this.groupBox_GameObject.Text = "Game Object";
+            // 
+            // label_GameObj_Type
+            // 
+            this.label_GameObj_Type.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_GameObj_Type.AutoSize = true;
+            this.label_GameObj_Type.Location = new System.Drawing.Point(22, 77);
+            this.label_GameObj_Type.Name = "label_GameObj_Type";
+            this.label_GameObj_Type.Size = new System.Drawing.Size(30, 12);
+            this.label_GameObj_Type.TabIndex = 4;
+            this.label_GameObj_Type.Text = "Type";
+            // 
+            // textBox_GameObj_Type
+            // 
+            this.textBox_GameObj_Type.Location = new System.Drawing.Point(24, 92);
+            this.textBox_GameObj_Type.Name = "textBox_GameObj_Type";
+            this.textBox_GameObj_Type.Size = new System.Drawing.Size(147, 19);
+            this.textBox_GameObj_Type.TabIndex = 3;
+            // 
+            // textBox_GameObj_Name
+            // 
+            this.textBox_GameObj_Name.Location = new System.Drawing.Point(24, 40);
+            this.textBox_GameObj_Name.Name = "textBox_GameObj_Name";
+            this.textBox_GameObj_Name.Size = new System.Drawing.Size(147, 19);
+            this.textBox_GameObj_Name.TabIndex = 2;
+            // 
+            // label_GameObj_Name
+            // 
+            this.label_GameObj_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_GameObj_Name.AutoSize = true;
+            this.label_GameObj_Name.Location = new System.Drawing.Point(22, 25);
+            this.label_GameObj_Name.Name = "label_GameObj_Name";
+            this.label_GameObj_Name.Size = new System.Drawing.Size(34, 12);
+            this.label_GameObj_Name.TabIndex = 2;
+            this.label_GameObj_Name.Text = "Name";
             // 
             // list_gameObj
             // 
@@ -489,7 +576,7 @@
             this.list_gameObj.ItemHeight = 12;
             this.list_gameObj.Location = new System.Drawing.Point(7, 7);
             this.list_gameObj.Name = "list_gameObj";
-            this.list_gameObj.Size = new System.Drawing.Size(250, 460);
+            this.list_gameObj.Size = new System.Drawing.Size(250, 436);
             this.list_gameObj.TabIndex = 0;
             // 
             // tab_Scheduling
@@ -792,32 +879,27 @@
             this.duplicateNPCToolStripMenuItem.Text = "Duplicate NPC";
             this.duplicateNPCToolStripMenuItem.Click += new System.EventHandler(this.duplicateNPCToolStripMenuItem_Click);
             // 
-            // button_NPCAdd
+            // button1
             // 
-            this.button_NPCAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_NPCAdd.Enabled = false;
-            this.button_NPCAdd.Location = new System.Drawing.Point(7, 442);
-            this.button_NPCAdd.Name = "button_NPCAdd";
-            this.button_NPCAdd.Size = new System.Drawing.Size(97, 23);
-            this.button_NPCAdd.TabIndex = 32;
-            this.button_NPCAdd.Text = "Add NPC";
-            this.button_NPCAdd.UseVisualStyleBackColor = true;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(160, 449);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Delete Object";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // vecTxtBox_Facing
+            // menuButton1
             // 
-            this.vecTxtBox_Facing.Enabled = false;
-            this.vecTxtBox_Facing.Location = new System.Drawing.Point(256, 84);
-            this.vecTxtBox_Facing.Name = "vecTxtBox_Facing";
-            this.vecTxtBox_Facing.Size = new System.Drawing.Size(202, 27);
-            this.vecTxtBox_Facing.TabIndex = 34;
-            // 
-            // vecTxtBox_Pos
-            // 
-            this.vecTxtBox_Pos.Enabled = false;
-            this.vecTxtBox_Pos.Location = new System.Drawing.Point(256, 38);
-            this.vecTxtBox_Pos.Name = "vecTxtBox_Pos";
-            this.vecTxtBox_Pos.Size = new System.Drawing.Size(202, 27);
-            this.vecTxtBox_Pos.TabIndex = 33;
+            this.menuButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.menuButton1.Enabled = false;
+            this.menuButton1.Location = new System.Drawing.Point(7, 449);
+            this.menuButton1.Name = "menuButton1";
+            this.menuButton1.Size = new System.Drawing.Size(97, 23);
+            this.menuButton1.TabIndex = 34;
+            this.menuButton1.Text = "Add Object";
+            this.menuButton1.UseVisualStyleBackColor = true;
             // 
             // Form_EditorMain
             // 
@@ -839,6 +921,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ownershipGrid)).EndInit();
             this.tab_GameObjects.ResumeLayout(false);
+            this.groupBox_GameObject.ResumeLayout(false);
+            this.groupBox_GameObject.PerformLayout();
             this.tab_Scheduling.ResumeLayout(false);
             this.tabCon_Scheduling.ResumeLayout(false);
             this.tab_SchedulingSub_Actions.ResumeLayout(false);
@@ -915,6 +999,13 @@
         private System.Windows.Forms.TextBox box_OwnershipAddKey;
         private Vector2TextBox vecTxtBox_Facing;
         private Vector2TextBox vecTxtBox_Pos;
+        private System.Windows.Forms.GroupBox groupBox_GameObject;
+        private System.Windows.Forms.Label label_GameObj_Type;
+        private System.Windows.Forms.TextBox textBox_GameObj_Type;
+        private System.Windows.Forms.TextBox textBox_GameObj_Name;
+        private System.Windows.Forms.Label label_GameObj_Name;
+        private System.Windows.Forms.Button button1;
+        private MenuButton menuButton1;
     }
 }
 
